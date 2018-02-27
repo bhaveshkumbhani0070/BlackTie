@@ -1,0 +1,91 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-6 float-justify">
+                            <i class="fa fa-align-left"></i> Manage Packages
+                        </div>
+                        <div class="col-sm-6 float-left">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" (click)="largeModal.show()">
+                                        Add New Packages
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Package ID</th>
+                                <th>Number of Hours</th>
+                                <th>Cost</th>
+                                <th>Duration</th>
+                                <th>Update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of data">
+                                <td>{{data.package_id}}</td>
+                                <td>{{data.package_hour}}</td>
+                                <td>{{data.package_cost}}</td>
+                                <td>{{data.package_duration}}</td>
+                                <button type="button" class="btn btn-primary" (click)="deleteMe(data.id)">
+                                        Remove
+                                </button>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div bsModal #largeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Package</h4>
+                <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="id" id="city" placeholder="Package ID">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="hours" id="postal-code" placeholder="Number of Hours">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="duration" id="city" placeholder="Duration of Package">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control" [(ngModel)]="cost" id="postal-code" placeholder="Cost of Package">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="AddMe(id,hours,duration,cost)" (click)="largeModal.hide()">Add Package</button>
+            </div>
+        </div>
+    </div>
+</div>
