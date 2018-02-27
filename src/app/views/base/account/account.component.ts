@@ -28,7 +28,7 @@ export class AccountComponent implements OnInit {
   loadData(){
     this.dataService.getManage()
     .subscribe( data => {
-      console.log('account data',data["data"]["data"]);
+      // console.log('account data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
    

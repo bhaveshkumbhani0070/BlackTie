@@ -37,7 +37,7 @@ export class PromotionsComponent implements OnInit {
   AddMe(description,validity){
    this.dataService.addAppPromotions(description,validity)
     .subscribe(data => {
-      console.log('data',data);
+      // console.log('data',data);
       this.loadData();
     });
   }

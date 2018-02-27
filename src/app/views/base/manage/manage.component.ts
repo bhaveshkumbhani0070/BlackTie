@@ -24,7 +24,7 @@ export class ManageComponent implements OnInit {
   loadData(){
     this.dataService.getManage()
     .subscribe( data => {
-      console.log('Manage data',data["data"]["data"]);
+      // console.log('Manage data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
   }

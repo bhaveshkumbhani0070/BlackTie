@@ -40,7 +40,7 @@ export class TipsComponent implements OnInit {
   AddMe(title,description){
     this.dataService.addAppTips(title,description)
     .subscribe(data => {
-      console.log('data',data);
+      // console.log('data',data);
       this.loadData();
     });
   }

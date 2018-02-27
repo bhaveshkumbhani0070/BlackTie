@@ -27,7 +27,7 @@ export class PackagesComponent implements OnInit {
   loadData(){
     this.dataService.getAppPackage()
     .subscribe(data => {
-      console.log('data',data);
+      // console.log('data',data);
       this.data=data;
     });
   }
@@ -42,7 +42,7 @@ export class PackagesComponent implements OnInit {
   AddMe(id,hours,duration,cost){
     this.dataService.addAppPackage(id,hours,cost,duration)
     .subscribe(data => {
-      console.log('data',data);
+      // console.log('data',data);
       this.loadData();
     });
   }

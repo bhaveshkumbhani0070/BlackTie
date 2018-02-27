@@ -26,7 +26,7 @@ export class WorksComponent implements OnInit {
   loadData(){
     this.dataService.getAppWorks()
     .subscribe(data => {
-      console.log('howitworks data',data);
+      // console.log('howitworks data',data);
       this.data=data;
     });
   }
@@ -41,7 +41,7 @@ export class WorksComponent implements OnInit {
   AddMe(title,description){
     this.dataService.addAppWorks(title,description)
     .subscribe(data => {
-      console.log('data',data);
+      // console.log('data',data);
       this.loadData();
     });
   }
