@@ -25,7 +25,7 @@ export class PackageComponent implements OnInit {
     this.dataService.getPackage()
     .subscribe( data => {
       //now you have the data
-      console.log('data',data["data"]["data"]);
+      console.log('Package Data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
   }

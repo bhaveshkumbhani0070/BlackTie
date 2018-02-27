@@ -21,14 +21,14 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let data of data">
-                                <td>Samppa Nori</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
                                 <td></td>
-                                <td>Samppa Nori</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
                                 <td></td>
+                                <td>{{data.flight_from}}</td>
+                                <td>{{data.flight_to}}</td>
+                                <td>{{data.date_time | date:'yyyy/MM/dd'}}</td>
+                                <td>{{data.date_time | date:'hh:mm:ss'}}</td>
+                                <td>{{data.plane_type}}</td>
+                                <td>{{data.number_of_passengers}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -15,7 +15,7 @@ export class AuthenticationService {
     }
  
     login(email: string, password: string): Observable<boolean> {
-        return this.http.post('http://13.127.126.229/api/login/', 
+        return this.http.post('http://13.127.126.229/api/admin_login/', 
         { email: email, password: password })
             .map((response: Response) => {
               console.log('response',response);

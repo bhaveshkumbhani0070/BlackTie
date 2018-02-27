@@ -26,7 +26,7 @@ export class FlightComponent implements OnInit {
   loadData(){
     this.dataService.getFlight()
     .subscribe( data => {
-      // console.log('data',data["data"]["data"]);
+      console.log('Flight Data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
     // this.http.get('http://13.127.126.229/api/request/flights/', {
