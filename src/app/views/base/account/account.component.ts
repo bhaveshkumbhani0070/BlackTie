@@ -16,7 +16,10 @@ export class AccountComponent implements OnInit {
   phone:string;
   hours:string;
   rHours:string;
-  
+  password:string;
+  fname:string;
+  lname:string;
+
   constructor(
     private dataService:DataService,
   ) { }
