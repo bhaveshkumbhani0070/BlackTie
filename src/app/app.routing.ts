@@ -12,7 +12,7 @@ import {
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'client/flight',
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },

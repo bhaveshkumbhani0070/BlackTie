@@ -7,8 +7,8 @@
                         <div class="col-sm-6 float-justify">
                             <i class="fa fa-align-left"></i> Flying Tips
                         </div>
-                        <div class="col-sm-6 float-left">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" (click)="largeModal.show()">
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary float-right" data-toggle="modal" (click)="largeModal.show()">
                                         Add New Tips
                                 </button>
                         </div>
@@ -29,9 +29,11 @@
                                 <td>{{data.id}}</td>
                                 <td>{{data.title}}</td>
                                 <td>{{data.description}}</td>
-                                <button type="button" class="btn btn-primary" (click)="deleteMe(data.id)">
+                                <td>
+                                    <button type="button" class="btn btn-primary" (click)="deleteMe(data.id)">
                                         Remove
                                 </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

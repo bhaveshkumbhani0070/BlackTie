@@ -7,8 +7,8 @@
                         <div class="col-sm-6 float-justify">
                             <i class="fa fa-align-left"></i> Manage Packages
                         </div>
-                        <div class="col-sm-6 float-left">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" (click)="largeModal.show()">
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary float-right" data-toggle="modal" (click)="largeModal.show()">
                                         Add New Packages
                                     </button>
                         </div>
@@ -31,9 +31,11 @@
                                 <td>{{data.package_hour}}</td>
                                 <td>{{data.package_cost}}</td>
                                 <td>{{data.package_duration}}</td>
-                                <button type="button" class="btn btn-primary" (click)="deleteMe(data.id)">
+                                <td>
+                                    <button type="button" class="btn btn-primary" (click)="deleteMe(data.id)">
                                         Remove
                                 </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
