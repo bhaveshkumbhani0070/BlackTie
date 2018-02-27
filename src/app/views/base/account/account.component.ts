@@ -22,21 +22,25 @@ export class AccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.loadData();
+    this.loadData();
   }
 
   loadData(){
-    this.dataService.getAccount()
+    this.dataService.getManage()
     .subscribe( data => {
+      console.log('account data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
    
   }
 
-  addAccount(id,postCode,email,phone,hours,rHours){
-    this.dataService.addAccount(id,postCode,email,phone,hours,rHours)
+  addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname){
+    this.dataService.addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname)
     .subscribe(data=>{
-      // this.loadData();
+      console.log('data',data);
+      this.loadData();
     })
   }
 }
+
+

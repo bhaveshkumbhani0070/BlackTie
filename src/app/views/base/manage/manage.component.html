@@ -15,18 +15,18 @@
                                 <th>Phone</th>
                                 <th>Package</th>
                                 <th>Remaining Hours</th>
-                                <th>Update Account</th>
+                                <!-- <th>Update Account</th> -->
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let data of data">
-                                <td>Samppa Nori</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
-                                <td></td>
-                                <td>Samppa Nori</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
+                                <td>{{data.client_id}}</td>
+                                <td>{{data.name}}</td>
+                                <td>{{data.email}}</td>
+                                <td>{{data.mobile}}</td>
+                                <td>{{data.total_package_hours}}</td>
+                                <td>{{data.remaining_hours}}</td>
+                                <!-- <td></td> -->
                             </tr>
                         </tbody>
                     </table>

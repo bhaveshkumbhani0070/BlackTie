@@ -18,7 +18,7 @@ export class ManageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.loadData();
+    this.loadData();
   }
 
   loadData(){

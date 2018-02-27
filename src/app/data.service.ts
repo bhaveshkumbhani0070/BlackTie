@@ -47,7 +47,7 @@ export class DataService {
   addNotification(id,type){
     return this.http.post(this.mainUrl + '/api/notification/',
     {
-      "client_id" :id,
+      "client_ids":[id],
       "txt":type,
       "heading":"Notification6"
     },
@@ -60,7 +60,7 @@ export class DataService {
   }
 
   getAccount(){
-    return this.http.get(this.mainUrl + '', {
+    return this.http.get(this.mainUrl + '/api/client', {
       headers: {
         "content-type": "application/json",
         "Authorization":"Bearer "+this.authenticationService.token
@@ -68,10 +68,16 @@ export class DataService {
     })
   }
 
-  addAccount(id,postCode,email,phone,hours,rHours){
-    return this.http.post(this.mainUrl + '',
+  addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname){
+    return this.http.post(this.mainUrl + '/api/client',
     {
-      "client_id" :id
+      "email": email,
+      "password":password,
+      "mobile":phone,
+      "total_package_hours":hours,
+      "remaining_hours":rHours,
+      "first_name":fname,
+      "last_name":lname
     },
     {
       headers: {
@@ -82,7 +88,7 @@ export class DataService {
   }
 
   getManage(){
-    return this.http.get(this.mainUrl + '', {
+    return this.http.get(this.mainUrl + '/api/userprofile/', {
       headers: {
         "content-type": "application/json",
         "Authorization":"Bearer "+this.authenticationService.token

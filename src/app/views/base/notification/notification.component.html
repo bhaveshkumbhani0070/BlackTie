@@ -42,9 +42,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let data of data">
-                                <td>Samppa Nori</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
+                                <td>{{data.client_id}}</td>
+                                <td>{{data.name}}</td>
+                                <td>{{data.email}}</td>
                             </tr>
                         </tbody>
                     </table>

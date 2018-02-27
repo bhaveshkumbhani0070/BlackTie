@@ -11,7 +11,15 @@
                             <input type="text" class="form-control" id="id" [(ngModel)]="id" placeholder="Client ID">
                         </div>
                         <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="postCode" placeholder="Postal Code">
+                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="hours" [(ngModel)]="fname" placeholder="First Name">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="lname" placeholder="Last Name">
                         </div>
                     </div>
                     <div class="row">
@@ -38,7 +46,7 @@
                         </div>
                     </div>
                     <div class="row float-right">
-                        <button type="button" class="btn btn-primary" (click)="addAccount(id,postCode,email,phone,hours,rHours)">ADD & NOTIFY CLIENT</button>
+                        <button type="button" class="btn btn-primary" (click)="addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname)">ADD & NOTIFY CLIENT</button>
                     </div>
                 </div>
             </div>
@@ -60,9 +68,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let data of data">
-                                <td>Samppa Nori</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
+                                <td>{{data.client_id}}</td>
+                                <td>{{data.name}}</td>
+                                <td>{{data.email}}</td>
                             </tr>
                         </tbody>
                     </table>
