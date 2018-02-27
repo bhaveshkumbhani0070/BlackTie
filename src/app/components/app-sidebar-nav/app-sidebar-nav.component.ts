@@ -79,7 +79,7 @@ export class AppSidebarNavItemComponent {
 @Component({
   selector: 'app-sidebar-nav-link',
   template: `
-    <a *ngIf="!isExternalLink(); else external"
+    <a *ngIf="!isExternalLink(); else external" style="font-size: 15px;"
       [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'"
       routerLinkActive="active"
       [routerLink]="[link.url]"

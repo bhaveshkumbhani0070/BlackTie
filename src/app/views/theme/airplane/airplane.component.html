@@ -77,6 +77,12 @@
                         <input type="text" class="form-control" [(ngModel)]="id" id="postal-code" placeholder="Number of Seats">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <input type="file" class="form-control" (change)="handleFileInput($event.target.files)" id="city" placeholder="Airplane Name">
+                    </div>
+
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" (click)="AddMe(name,id)" (click)="largeModal.hide()">Add Airplane</button>

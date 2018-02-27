@@ -15,27 +15,27 @@ export const navigation = [
     name: 'CLIENT MANAGEMENT'
   },
   {
-    name: 'Flight',
+    name: 'Flight Enquiries',
     url: '/client/flight',
     icon: 'icon-puzzle'
   },
   {
-    name:'Package',
+    name:'Package Bookings',
     url:'/client/package',
     icon:'icon-puzzle'
   },
   {
-    name:'Manage',
+    name:'Manage Flying Hours',
     url:'/client/manage',
     icon:'icon-puzzle'
   },
   {
-    name:'Notification',
+    name:'Send Notifications',
     url:'/client/notification',
     icon:'icon-puzzle'
   },
   {
-    name:'Account',
+    name:'Add New Account',
     url:'/client/account',
     icon:'icon-puzzle'
   },
@@ -57,32 +57,32 @@ export const navigation = [
   //   icon: 'icon-pencil'
   // },
   {
-    name: 'Airplane',
+    name: 'Airplane Menu',
     url: '/app/airplane',
     icon: 'icon-pencil'
   },
   {
-    name: 'Slider',
+    name: 'Slider Banners',
     url: '/app/slider',
     icon: 'icon-pencil'
   },
   {
-    name: 'Package',
+    name: 'Our Packages',
     url: '/app/package',
     icon: 'icon-pencil'
   },
   {
-    name: 'Tips',
-    url: '/app/tips',
-    icon: 'icon-pencil'
-  },
-  {
-    name: 'Works',
+    name: 'How It Works',
     url: '/app/works',
     icon: 'icon-pencil'
   },
   {
-    name: 'Promotions',
+    name: 'Flying Tips',
+    url: '/app/tips',
+    icon: 'icon-pencil'
+  },
+  {
+    name: 'Manage Promotions',
     url: '/app/promotions',
     icon: 'icon-pencil'
   },

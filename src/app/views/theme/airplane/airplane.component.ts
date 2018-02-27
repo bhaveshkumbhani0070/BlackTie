@@ -13,6 +13,7 @@ export class AirplaneComponent implements OnInit {
   airplane:any;
   name:string;
   id:string;
+  fileToUpload: File = null;
   public primaryModal;
   constructor(
     private http: HttpClient,
@@ -41,5 +42,8 @@ export class AirplaneComponent implements OnInit {
     .subscribe(data => {
       this.loadData();
     });
+  }
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
   }
 }
