@@ -7,13 +7,13 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-12">
                             <label class="sr-only">Enter Client ID</label>
                             <input type="text" class="form-control" [(ngModel)]="id" placeholder="Enter Client ID">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-12">
                             <textarea id="textarea-input" name="textarea-input" [(ngModel)]="type" rows="2" class="form-control" placeholder="Type Notification Text"></textarea>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of data | orderBy:'created_at':true">
+                            <tr *ngFor="let data of data | orderBy:'created_at'">
                                 <td>{{data.client_id}}</td>
                                 <td>{{data.name}}</td>
                                 <td>{{data.email}}</td>

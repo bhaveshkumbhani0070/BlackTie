@@ -18,14 +18,14 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Number of Seats</th>
+                                <th>Name</th>
                                 <th>Image Path</th>
                                 <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let data of slider">
-                                <td>{{data.id}}</td>
+                                <td>{{data.banner_name}}</td>
                                 <td>{{data.banner_image}}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" (click)="deleteMe(data.id)">

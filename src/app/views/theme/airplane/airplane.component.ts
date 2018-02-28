@@ -51,6 +51,27 @@ export class AirplaneComponent implements OnInit {
   handleFileInput(files: FileList) {
     console.log('file to upload',files.item(0));
     this.fileToUpload = files.item(0);
+
+
+    // AWS.config.update({
+    //   accessKeyId: "",
+    //   secretAccessKey: "",
+    //   region: ""  
+    //   });
+      
+    //   var s3 = new AWS.S3();
+    //   var params = {
+    //       Bucket: '',
+    //       Key: this.fileToUpload.name,
+    //       Body: this.fileToUpload
+    //   };
+    //   s3.upload(params, function (err, res) {
+    //       if (err) {
+    //           console.log("Error uploading data: ", err);
+    //       } else {
+    //           console.log("Successfully uploaded data to myBucket/myKey");
+    //       }
+    //   });
   }
 
   uploadfile(event) {

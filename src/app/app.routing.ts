@@ -41,10 +41,10 @@ export const routes: Routes = [
       //   loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
       // },
       
-      // {
-      //   path: 'icons',
-      //   loadChildren: './views/icons/icons.module#IconsModule'
-      // },
+      {
+        path: 'icons',
+        loadChildren: './views/icons/icons.module#IconsModule'
+      },
       // {
       //   path: 'notifications',
       //   loadChildren: './views/notifications/notifications.module#NotificationsModule'

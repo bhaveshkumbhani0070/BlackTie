@@ -2,7 +2,7 @@ export const navigation = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-speedometer',
+    icon: 'fa fa-home fa-lg ',
     // badge: {
     //   variant: 'info',
     //   text: 'NEW'
@@ -17,27 +17,27 @@ export const navigation = [
   {
     name: 'Flight Enquiries',
     url: '/client/flight',
-    icon: 'icon-puzzle'
+    icon: 'fa fa-fighter-jet fa-lg'
   },
   {
     name:'Package Bookings',
     url:'/client/package',
-    icon:'icon-puzzle'
+    icon:'fa fa-dollar fa-lg '
   },
   {
     name:'Flying Hours',
     url:'/client/manage',
-    icon:'icon-puzzle'
+    icon:'fa fa-clock-o fa-lg '
   },
   {
     name:'Send Notifications',
     url:'/client/notification',
-    icon:'icon-puzzle'
+    icon:'fa fa-bell fa-lg '
   },
   {
     name:'Add New Account',
     url:'/client/account',
-    icon:'icon-puzzle'
+    icon:'fa fa-user-plus fa-lg '
   },
   
 
@@ -59,32 +59,32 @@ export const navigation = [
   {
     name: 'Airplane Menu',
     url: '/app/airplane',
-    icon: 'icon-pencil'
+    icon: 'fa fa-plane fa-lg '
   },
   {
     name: 'Slider Banners',
     url: '/app/slider',
-    icon: 'icon-pencil'
+    icon: 'fa fa-file-image-o fa-lg '
   },
   {
     name: 'Our Packages',
     url: '/app/package',
-    icon: 'icon-pencil'
+    icon: 'fa fa-file-image-o fa-lg '
   },
   {
     name: 'How It Works',
     url: '/app/works',
-    icon: 'icon-pencil'
+    icon: 'fa fa-question-circle fa-lg '
   },
   {
     name: 'Flying Tips',
     url: '/app/tips',
-    icon: 'icon-pencil'
+    icon: 'fa fa-bars fa-lg'
   },
   {
     name: 'Manage Promotions',
     url: '/app/promotions',
-    icon: 'icon-pencil'
+    icon: 'fa fa-tag fa-lg'
   },
   // {
   //   name: 'Login',
@@ -281,8 +281,8 @@ export const navigation = [
   {
     name: 'Logout',
     url: '/pages/login',
-    icon: 'icon-layers',
-    variant: 'danger'
+    icon: 'fa fa-sign-out fa-lg',
+    // variant: 'danger'
   }
   // {
   //         name: 'Forms',

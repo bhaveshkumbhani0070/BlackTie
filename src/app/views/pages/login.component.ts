@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../authentication.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   templateUrl: 'login.component.html'
@@ -13,11 +14,21 @@ export class LoginComponent {
   userForm: any;
   errorEmail:string="";
   errorPassword:string="";
+  
+  // myForm: FormGroup;
+  // emailCtrl: FormControl;
+  
   constructor(
     private authenticationService:AuthenticationService,
-    private router:Router 
+    private router:Router ,
+    // private fb: FormBuilder
   ) { 
-    
+    // this.myForm = fb.group({
+    //   username:  ['', Validators.required],
+    //   surname: ['', Validators.required],
+    //   message: ['', Validators.required],
+    //   email: ['', Validators.email]
+    // });
   }
   ngOnInit() {
     // reset login status
@@ -37,14 +48,28 @@ export class LoginComponent {
       return;
     }
     else{
-      this.errorEmail="";
+      var EMAIL_REGEXP = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+      var regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+      if (regexp.test(email)) {
+        this.errorEmail="";
+      }
+      else{
+        this.errorEmail="Please provide a valid email";
+        return;
+      }
 
     }
     if(!password){
       this.errorPassword="Password field is required";
     }
     else{
-      this.errorPassword="";
+      if(password.length>8){
+        this.errorPassword="";
+      }
+      else{
+        this.errorPassword="Password must more than 8 character";
+        return;
+      }
     }
     this.authenticationService.login(email, password)
     .subscribe(result => {

@@ -23,7 +23,7 @@ export class SliderComponent implements OnInit {
   loadData(){
     this.dataService.getAppSlider()
     .subscribe(data => {
-      // console.log('slider data',data);
+      console.log('slider data',data);
       this.slider=data;
     });
   }

@@ -13,12 +13,12 @@
                                 <th>Name</th>
                                 <th>Emil</th>
                                 <th>Phone</th>
-                                <th>Package Booked</th>
+                                <th>Package Id</th>
                                 <th>Payment</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of data | orderBy:'created_at':true">
+                            <tr *ngFor="let data of data | orderBy:'created_at'">
                                 <td>{{data.client_id}}</td>
                                 <td>{{data.name}}</td>
                                 <td>{{data.email}}</td>

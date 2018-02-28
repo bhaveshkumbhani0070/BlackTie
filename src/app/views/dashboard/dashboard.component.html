@@ -31,25 +31,18 @@
                             <input type="text" class="form-control" id="postal-code" [(ngModel)]="rHours" placeholder="Remaining Hours">
                         </div>
                     </div>
-                    <div class="row">
-                        <!-- <div class="form-group col-sm-6">
-                                            <input type="text" class="form-control" id="id" [(ngModel)]="id" placeholder="Client ID">
-                                        </div> -->
-                        <div class="form-group col-sm-6">
+                    <!-- <div class="row">
+                         <div class="form-group col-sm-6">
                             <input type="text" class="form-control" id="postal-code" [(ngModel)]="password" placeholder="Password">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="card">
-                            <div class="card-body">
-                                Dear Client, You can now download BlackTie mobile app from appstore and login with your email address to access your account.
-                            </div>
-                        </div>
+                    </div> -->
+                    <div class="row" style="margin:3px 0px 13px 0px;">
+                        Dear Client, You can now download BlackTie mobile app from appstore and login with your email address to access your account.
                     </div>
 
 
                     <div class="row float-right">
-                        <button type="button" class="btn btn-primary" (click)="addAccount(postCode,email,phone,hours,rHours,password,fname,lname)">ADD & NOTIFY CLIENT</button>
+                        <button type="button" class="btn btn-primary" (click)="addAccount()">ADD & NOTIFY CLIENT</button>
                     </div>
                 </div>
             </div>
@@ -61,13 +54,13 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-12">
                             <label class="sr-only">Enter Client ID</label>
                             <input type="text" class="form-control" [(ngModel)]="idd" placeholder="Enter Client ID">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-12">
                             <textarea id="textarea-input" name="textarea-input" [(ngModel)]="typee" rows="2" class="form-control" placeholder="Type Notification Text"></textarea>
                         </div>
                     </div>

@@ -36,8 +36,8 @@ export class AccountComponent implements OnInit {
    
   }
 
-  addAccount(postCode,email,phone,hours,rHours,password,fname,lname){
-    this.dataService.addAccount(Math.floor(1000 + Math.random() * 9000),postCode,email,phone,hours,rHours,password,fname,lname)
+  addAccount(){
+    this.dataService.addAccount(this.email,this.phone,this.hours,this.rHours,"password",this.fname,this.lname)
     .subscribe(data=>{
       console.log('data',data);
       this.loadData();

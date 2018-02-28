@@ -69,22 +69,23 @@ export class DataService {
     })
   }
 
-  addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname){
-    console.log('addAccount');
-    return this.http.post('http://13.127.126.229/api/client',
+  addAccount(email,phone,hours,rHours,password,fname,lname){
+
+    console.log('addAccount',email,phone,hours,rHours,password,fname,lname);
+    return this.http.post('http://13.127.126.229/api/client/',
     {
-      "email": "tushar.coder10@gmail.com",
-      "password":"123456",
-      "mobile":"8989898989",
-      "total_package_hours":"3",
-      "remaining_hours":"3",
-      "first_name":"tushar",
-      "last_name":"agarwal"
+      "email": email,
+      "password":password,
+      "mobile":phone,
+      "total_package_hours":hours,
+      "remaining_hours":rHours,
+      "first_name":fname,
+      "last_name":lname
     },
     {
       headers: {
         "content-type": "application/json",
-        "Authorization":"Bearer "+this.authenticationService.token
+        "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZG1pbl9pZCI6ImFkbWluMDAxIn0.XTz8PZtzmNQroGWb2d8VSfj-agL3kEV5d3AubY9EKJI"
       }
     });
   }
