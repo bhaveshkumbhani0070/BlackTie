@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { DataService } from '../../../data.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import * as AWS from 'aws-sdk';
 
 @Component({
   selector: 'app-airplane',
@@ -14,6 +15,10 @@ export class AirplaneComponent implements OnInit {
   name:string;
   id:string;
   fileToUpload: File = null;
+
+  myfile:any;
+  file:any;
+
   public primaryModal;
   constructor(
     private http: HttpClient,
@@ -47,4 +52,32 @@ export class AirplaneComponent implements OnInit {
     console.log('file to upload',files.item(0));
     this.fileToUpload = files.item(0);
   }
+
+  uploadfile(event) {
+    AWS.config.update({
+      accessKeyId: "",
+      secretAccessKey: "",
+      "region": ""  
+      });
+      
+      var s3 = new AWS.S3();
+      var params = {
+          Bucket: '',
+          Key: this.file.name,
+          Body: this.file
+      };
+      s3.upload(params, function (err, res) {
+          if (err) {
+              console.log("Error uploading data: ", err);
+          } else {
+              console.log("Successfully uploaded data to myBucket/myKey");
+          }
+      });
+      
+  }
+
+
+    fileEvent(files: FileList){
+        this.file = files.item(0);
+    }
 }
