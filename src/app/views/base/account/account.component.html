@@ -8,11 +8,10 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="id" [(ngModel)]="id" placeholder="Client ID">
+                            <input type="text" class="form-control" id="email" [(ngModel)]="email" placeholder="Email">
                         </div>
-
                         <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="password" placeholder="Password">
+                            <input type="text" class="form-control" id="phone number" [(ngModel)]="phone" placeholder="Phone Number">
                         </div>
                     </div>
                     <div class="row">
@@ -23,14 +22,7 @@
                             <input type="text" class="form-control" id="postal-code" [(ngModel)]="lname" placeholder="Last Name">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="email" [(ngModel)]="email" placeholder="Email">
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="phone number" [(ngModel)]="phone" placeholder="Phone Number">
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <input type="text" class="form-control" id="hours" [(ngModel)]="hours" placeholder="Package Hours">
@@ -40,14 +32,24 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="id" [(ngModel)]="id" placeholder="Client ID">
+                                </div> -->
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="card">
                             <div class="card-body">
                                 Dear Client, You can now download BlackTie mobile app from appstore and login with your email address to access your account.
                             </div>
                         </div>
                     </div>
+
+
                     <div class="row float-right">
-                        <button type="button" class="btn btn-primary" (click)="addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname)">ADD & NOTIFY CLIENT</button>
+                        <button type="button" class="btn btn-primary" (click)="addAccount(postCode,email,phone,hours,rHours,password,fname,lname)">ADD & NOTIFY CLIENT</button>
                     </div>
                 </div>
             </div>

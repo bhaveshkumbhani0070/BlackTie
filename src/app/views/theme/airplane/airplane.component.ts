@@ -44,6 +44,7 @@ export class AirplaneComponent implements OnInit {
     });
   }
   handleFileInput(files: FileList) {
+    console.log('file to upload',files.item(0));
     this.fileToUpload = files.item(0);
   }
 }

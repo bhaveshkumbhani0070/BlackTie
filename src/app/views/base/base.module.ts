@@ -2,8 +2,9 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { CardsComponent } from './cards.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 // Forms Component
 import { FormsComponent } from './forms.component';
@@ -58,12 +59,14 @@ import { AccountComponent } from './account/account.component';
     BaseRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule,
+    OrderModule,
     CarouselModule.forRoot(),
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
   ],
   declarations: [
     CardsComponent,

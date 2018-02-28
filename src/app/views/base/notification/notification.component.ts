@@ -27,7 +27,7 @@ export class NotificationComponent implements OnInit {
   loadData(){
     this.dataService.getNotification()
     .subscribe(d => {
-      //  console.log('getNotification',d["data"]["data"]);
+       console.log('getNotification',d["data"]["data"]);
        this.data=d["data"]["data"];
     });
 

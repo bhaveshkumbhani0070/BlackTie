@@ -25,7 +25,7 @@ export const navigation = [
     icon:'icon-puzzle'
   },
   {
-    name:'Manage Flying Hours',
+    name:'Flying Hours',
     url:'/client/manage',
     icon:'icon-puzzle'
   },

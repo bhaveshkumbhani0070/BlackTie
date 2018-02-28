@@ -3,6 +3,7 @@ import { HttpClient,HttpResponse,HttpHeaders } from '@angular/common/http';
 import { DataService } from '../../../data.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { OrderModule } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-flight',
@@ -26,7 +27,7 @@ export class FlightComponent implements OnInit {
   loadData(){
     this.dataService.getFlight()
     .subscribe( data => {
-      // console.log('Flight Data',data["data"]["data"]);
+      console.log('Flight Data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
     // this.http.get('http://13.127.126.229/api/request/flights/', {

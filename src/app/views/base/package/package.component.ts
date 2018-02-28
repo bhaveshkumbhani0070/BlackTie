@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { DataService } from '../../../data.service';
-
 @Component({
   selector: 'app-package',
   templateUrl: './package.component.html',
@@ -25,7 +24,7 @@ export class PackageComponent implements OnInit {
     this.dataService.getPackage()
     .subscribe( data => {
       //now you have the data
-      // console.log('Package Data',data["data"]["data"]);
+      console.log('Package Data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
   }

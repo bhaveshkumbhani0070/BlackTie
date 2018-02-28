@@ -45,6 +45,7 @@ export class DataService {
   }
 
   addNotification(id,type){
+    console.log('addNotification');
     return this.http.post(this.mainUrl + '/api/notification/',
     {
       "client_ids":[id],
@@ -69,15 +70,16 @@ export class DataService {
   }
 
   addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname){
-    return this.http.post(this.mainUrl + '/api/client',
+    console.log('addAccount');
+    return this.http.post('http://13.127.126.229/api/client',
     {
-      "email": email,
-      "password":password,
-      "mobile":phone,
-      "total_package_hours":hours,
-      "remaining_hours":rHours,
-      "first_name":fname,
-      "last_name":lname
+      "email": "tushar.coder10@gmail.com",
+      "password":"123456",
+      "mobile":"8989898989",
+      "total_package_hours":"3",
+      "remaining_hours":"3",
+      "first_name":"tushar",
+      "last_name":"agarwal"
     },
     {
       headers: {
@@ -95,7 +97,21 @@ export class DataService {
       }
     })
   }
-
+  updateManage(id,hour,rhour)
+  {
+    return this.http.put(this.mainUrl+'/api/userprofile/',
+    {
+      "total_package_hours":hour,
+      "remaining_hours":rhour,
+      "client_id":id
+    },
+    {
+      headers: {
+        "content-type": "application/json",
+        "Authorization":"Bearer "+this.authenticationService.token
+      }
+    });
+  }
   // App management
 
   addAirplane(id,name){

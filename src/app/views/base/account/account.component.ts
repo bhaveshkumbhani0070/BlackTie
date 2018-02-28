@@ -10,7 +10,6 @@ import { DataService } from '../../../data.service';
 export class AccountComponent implements OnInit {
 
   data :any;
-  id:string;
   postCode:string;
   email:string;
   phone:string;
@@ -31,14 +30,14 @@ export class AccountComponent implements OnInit {
   loadData(){
     this.dataService.getManage()
     .subscribe( data => {
-      // console.log('account data',data["data"]["data"]);
+      console.log('account data',data["data"]["data"]);
       this.data=data["data"]["data"];
     })
    
   }
 
-  addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname){
-    this.dataService.addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname)
+  addAccount(postCode,email,phone,hours,rHours,password,fname,lname){
+    this.dataService.addAccount(Math.floor(1000 + Math.random() * 9000),postCode,email,phone,hours,rHours,password,fname,lname)
     .subscribe(data=>{
       console.log('data',data);
       this.loadData();
