@@ -283,5 +283,10 @@ export const navigation = [
     url: '/pages/login',
     icon: 'icon-layers',
     variant: 'danger'
-  }
+  },
+  {
+          name: 'Forms',
+          url: '/client/forms',
+          icon: 'icon-puzzle'
+        },
 ];
