@@ -28,6 +28,7 @@ export class NotificationComponent implements OnInit {
     this.dataService.getNotification()
     .subscribe(d => {
        console.log('getNotification',d["data"]["data"]);
+       localStorage.setItem('totalNotification', d["data"]["data"]["length"]);
        this.data=d["data"]["data"];
     });
 

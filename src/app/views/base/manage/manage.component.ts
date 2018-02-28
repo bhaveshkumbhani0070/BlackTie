@@ -29,6 +29,7 @@ export class ManageComponent implements OnInit {
     this.dataService.getManage()
     .subscribe( data => {
       // console.log('Manage data',data["data"]["data"]);
+      localStorage.setItem('totalManagement', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
   }

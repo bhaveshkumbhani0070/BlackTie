@@ -47,7 +47,7 @@
         @include sidebar-width($sidebar-borders, $sidebar-width);
         &::-webkit-scrollbar {
             position: absolute;
-            width: 10px;
+            width: 7px;
             margin-left: -10px;
             -webkit-appearance: none;
         }

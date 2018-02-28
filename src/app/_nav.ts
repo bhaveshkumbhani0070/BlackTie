@@ -8,7 +8,7 @@ export const navigation = [
     //   text: 'NEW'
     // }
   },
-
+  
   //CLIENT MANAGEMENT
   {
     title: true,
@@ -17,22 +17,38 @@ export const navigation = [
   {
     name: 'Flight Enquiries',
     url: '/client/flight',
-    icon: 'fa fa-fighter-jet fa-lg'
+    icon: 'fa fa-fighter-jet fa-lg',
+    badge: {
+      variant: 'info',
+      text: localStorage.getItem('totalFlight')
+    }
   },
   {
     name:'Package Bookings',
     url:'/client/package',
-    icon:'fa fa-dollar fa-lg '
+    icon:'fa fa-dollar fa-lg ',
+    badge: {
+      variant: 'info',
+      text: localStorage.getItem('totalPackage')
+    }
   },
   {
     name:'Flying Hours',
     url:'/client/manage',
-    icon:'fa fa-clock-o fa-lg '
+    icon:'fa fa-clock-o fa-lg ',
+    // badge: {
+    //   variant: 'info',
+    //   text: localStorage.getItem('totalManagement')
+    // }
   },
   {
     name:'Send Notifications',
     url:'/client/notification',
-    icon:'fa fa-bell fa-lg '
+    icon:'fa fa-bell fa-lg ',
+    // badge: {
+    //   variant: 'info',
+    //   text: localStorage.getItem('totalNotification')
+    // }
   },
   {
     name:'Add New Account',

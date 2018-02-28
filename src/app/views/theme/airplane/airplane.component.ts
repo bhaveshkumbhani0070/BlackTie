@@ -50,8 +50,7 @@ export class AirplaneComponent implements OnInit {
   }
   handleFileInput(files: FileList) {
     console.log('file to upload',files.item(0));
-    this.fileToUpload = files.item(0);
-
+    // this.fileToUpload = files.item(0);
 
     // AWS.config.update({
     //   accessKeyId: "",
@@ -61,7 +60,7 @@ export class AirplaneComponent implements OnInit {
       
     //   var s3 = new AWS.S3();
     //   var params = {
-    //       Bucket: '',
+    //       Bucket: "flyblacktie",
     //       Key: this.fileToUpload.name,
     //       Body: this.fileToUpload
     //   };
@@ -69,7 +68,7 @@ export class AirplaneComponent implements OnInit {
     //       if (err) {
     //           console.log("Error uploading data: ", err);
     //       } else {
-    //           console.log("Successfully uploaded data to myBucket/myKey");
+    //           console.log("Successfully uploaded data to myBucket/myKey",res);
     //       }
     //   });
   }

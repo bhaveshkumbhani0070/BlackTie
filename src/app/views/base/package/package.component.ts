@@ -25,6 +25,7 @@ export class PackageComponent implements OnInit {
     .subscribe( data => {
       //now you have the data
       console.log('Package Data',data["data"]["data"]);
+      localStorage.setItem('totalPackage', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
   }
