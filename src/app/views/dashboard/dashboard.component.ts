@@ -25,10 +25,11 @@ export class DashboardComponent {
     private dataService:DataService,
   ) { }
 
-  addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname){
-    this.dataService.addAccount(id,postCode,email,phone,hours,rHours,password,fname,lname)
+  addAccount(postCode,email,phone,hours,rHours,password,fname,lname){
+    this.dataService.addAccount(Math.floor(1000 + Math.random() * 9000),postCode,email,phone,hours,rHours,password,fname,lname)
     .subscribe(data=>{
       console.log('data',data);
+    
     })
   }
   addMe(idd,typee){

@@ -30,7 +30,7 @@ export class LoginComponent {
     .subscribe(result => {
         if (result === true) {
             // login successful
-            this.router.navigate(['/client/flight']);
+            this.router.navigate(['/dashboard']);
         } else {
             // login failed
             console.log('Fail to authenticate');
