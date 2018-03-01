@@ -45,10 +45,10 @@ export const navigation = [
     name:'Send Notifications',
     url:'/client/notification',
     icon:'fa fa-bell fa-lg ',
-    // badge: {
-    //   variant: 'info',
-    //   text: localStorage.getItem('totalNotification')
-    // }
+    badge: {
+      variant: 'info',
+      text: localStorage.getItem('totalNotification')
+    }
   },
   {
     name:'Add New Account',
