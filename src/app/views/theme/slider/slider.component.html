@@ -26,7 +26,10 @@
                         <tbody>
                             <tr *ngFor="let data of slider">
                                 <td>{{data.banner_name}}</td>
-                                <td>{{data.banner_image}}</td>
+                                <td><a href="{{data.banner_image}}" target="_blank">
+                                        {{data.banner_image}}
+                                    </a>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-primary" (click)="deleteMe(data.id)">
                                         Remove
@@ -65,6 +68,11 @@
             </div>
             <div class="modal-body">
                 <!-- File  -->
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <input type="file" class="form-control" (change)="handleFileInput($event.target.files)" id="file" placeholder="Select file">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" (click)="AddMe()" (click)="largeModal.hide()">Add Banner</button>

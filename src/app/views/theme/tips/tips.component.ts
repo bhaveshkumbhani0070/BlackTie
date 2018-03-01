@@ -37,10 +37,12 @@ export class TipsComponent implements OnInit {
     });
   }
 
-  AddMe(title,description){
-    this.dataService.addAppTips(title,description)
+  AddMe(){
+    this.dataService.addAppTips(this.title,this.description)
     .subscribe(data => {
       // console.log('data',data);
+      this.title="";
+      this.description="";
       this.loadData();
     });
   }

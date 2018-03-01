@@ -15,6 +15,9 @@ export const navigation = [
     name: 'CLIENT MANAGEMENT'
   },
   {
+      divider: true
+  },
+  {
     name: 'Flight Enquiries',
     url: '/client/flight',
     icon: 'fa fa-fighter-jet fa-lg',
@@ -304,5 +307,5 @@ export const navigation = [
   //         name: 'Forms',
   //         url: '/client/forms',
   //         icon: 'icon-puzzle'
-  //       },
+  //       }
 ];

@@ -39,10 +39,14 @@ export class PackagesComponent implements OnInit {
     });
   }
 
-  AddMe(id,hours,duration,cost){
-    this.dataService.addAppPackage(id,hours,cost,duration)
+  AddMe(){
+    this.dataService.addAppPackage(this.id,this.hours,this.cost,this.duration)
     .subscribe(data => {
       // console.log('data',data);
+      this.id="";
+      this.hours="";
+      this.cost="";
+      this.duration="";
       this.loadData();
     });
   }

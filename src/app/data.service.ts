@@ -16,6 +16,11 @@ export class DataService {
     private authenticationService:AuthenticationService
   ) {}
   mainUrl="http://13.127.126.229";
+
+  accessKeyId= "";
+  secretAccessKey= "";
+  Bucket= "";
+
   // Client management
   getFlight() {
       return this.http.get(this.mainUrl + '/api/request/flights/', {
@@ -115,11 +120,12 @@ export class DataService {
   }
   // App management
 
-  addAirplane(id,name){
+  addAirplane(id,name,img){
     return this.http.post(this.mainUrl + '/api/airplanemenu/',
     {
       "airplane_name": name,
-      "number_of_seat": id
+      "number_of_seat": id,
+      "airplane_photo":img
     })
   }
   getAirplane(){
@@ -160,10 +166,11 @@ export class DataService {
   }
 
   addAppSlider(file){
-    // return this.http.post(this.mainUrl + '/api/sliderbanner/',
-    // {
-    //   "file": file
-    // })
+    return this.http.post(this.mainUrl + '/api/sliderbanner/',
+    {
+      "banner_name":"slider 5",
+      "banner_image": file
+    })
   }
   getAppSlider(){
     return this.http.get(this.mainUrl + '/api/sliderbanner/');

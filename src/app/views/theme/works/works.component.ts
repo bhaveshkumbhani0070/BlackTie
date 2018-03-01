@@ -38,10 +38,12 @@ export class WorksComponent implements OnInit {
     });
   }
 
-  AddMe(title,description){
-    this.dataService.addAppWorks(title,description)
+  AddMe(){
+    this.dataService.addAppWorks(this.title,this.description)
     .subscribe(data => {
       // console.log('data',data);
+      this.title="";
+      this.description="";
       this.loadData();
     });
   }

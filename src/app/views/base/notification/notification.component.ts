@@ -34,9 +34,10 @@ export class NotificationComponent implements OnInit {
 
   }
 
-  addMe(id,type){
-   this.dataService.addNotification(id,type) 
+  addMe(){
+   this.dataService.addNotification(this.id,this.type) 
     .subscribe(data => {
+      this.type="";
       // console.log('addNotification',data);
       this.loadData();
     });

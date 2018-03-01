@@ -34,10 +34,12 @@ export class PromotionsComponent implements OnInit {
       this.loadData();
     });
   }
-  AddMe(description,validity){
-   this.dataService.addAppPromotions(description,validity)
+  AddMe(){
+   this.dataService.addAppPromotions(this.description,this.validity)
     .subscribe(data => {
       // console.log('data',data);
+      this.description="";
+      this.validity="";
       this.loadData();
     });
   }

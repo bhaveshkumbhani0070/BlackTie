@@ -27,22 +27,10 @@ export class FlightComponent implements OnInit {
   loadData(){
     this.dataService.getFlight()
     .subscribe( data => {
-      console.log('Flight Data',data["data"]["data"]);
-      console.log('totalFlight',data["data"]["data"]["length"])
+      // console.log('Flight Data',data["data"]["data"]);
       localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
-    // this.http.get('http://13.127.126.229/api/request/flights/', {
-    //   headers: {
-    //     "content-type": "application/json",
-    //     "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjbGllbnRfaWQiOiIwMDAxNiJ9.eD4vKBcGOKnyBbIlms2ictmmYtbJyIEDVN_zsnZelW8"
-    //   }
-    // })
-    // .subscribe(d => {
-    //    console.log('data',d);
-    //    this.data=d;
-    // });
-
   }
 }
 

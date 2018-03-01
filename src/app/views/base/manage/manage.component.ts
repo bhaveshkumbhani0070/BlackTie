@@ -36,10 +36,14 @@ export class ManageComponent implements OnInit {
 
   updateId(d){
     this.id=d.client_id;
+    this.hours=d.total_package_hours;
+    this.rHours=d.remaining_hours;
   }
-  UpdateMe(hours,rHours){
-    this.dataService.updateManage(this.id,hours,rHours)
+  UpdateMe(){
+    this.dataService.updateManage(this.id,this.hours,this.rHours)
     .subscribe(data=>{
+      this.hours="";
+      this.rHours="";
       this.loadData();
     })
   }

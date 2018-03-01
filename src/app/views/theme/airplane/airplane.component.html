@@ -79,16 +79,12 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <input type="file" class="form-control" (change)="handleFileInput($event.target.files)" id="city" placeholder="Airplane Name">
+                        <input type="file" class="form-control" (change)="handleFileInput($event.target.files)" id="file" placeholder="Select file">
                     </div>
-                    <!-- <form (ngSubmit)="onSubmit(f)" #f="ngForm" action="">
-                        <input type="file" (change)="fileEvent($event.target.files)" />
-                    </form>
-                    <button (click)="uploadfile(f)">Upload file!</button> -->
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="AddMe(name,id)" (click)="largeModal.hide()">Add Airplane</button>
+                <button type="button" class="btn btn-primary" (click)="AddMe()" (click)="largeModal.hide()">Add Airplane</button>
             </div>
         </div>
     </div>

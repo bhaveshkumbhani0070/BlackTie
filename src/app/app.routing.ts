@@ -32,31 +32,31 @@ export const routes: Routes = [
         path: 'dashboard',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule'
       },
-      // {
-      //   path: 'buttons',
-      //   loadChildren: './views/buttons/buttons.module#ButtonsModule'
-      // },
-      // {
-      //   path: 'charts',
-      //   loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
-      // },
+      {
+        path: 'buttons',
+        loadChildren: './views/buttons/buttons.module#ButtonsModule'
+      },
+      {
+        path: 'charts',
+        loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
+      },
       
       {
         path: 'icons',
         loadChildren: './views/icons/icons.module#IconsModule'
       },
-      // {
-      //   path: 'notifications',
-      //   loadChildren: './views/notifications/notifications.module#NotificationsModule'
-      // },
+      {
+        path: 'notifications',
+        loadChildren: './views/notifications/notifications.module#NotificationsModule'
+      },
       {
         path: 'app',
         loadChildren: './views/theme/theme.module#ThemeModule'
       },
-      // {
-      //   path: 'widgets',
-      //   loadChildren: './views/widgets/widgets.module#WidgetsModule'
-      // }
+      {
+        path: 'widgets',
+        loadChildren: './views/widgets/widgets.module#WidgetsModule'
+      }
     ]
   },
   {
