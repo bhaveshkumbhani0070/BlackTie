@@ -5,9 +5,9 @@
                 <div class="card-group">
                     <div class="card p-4">
                         <div class="card-body">
-                            <form #f="ngForm" (ngSubmit)="logMein()">
-                                <h1>Login</h1>
-                                <p class="text-muted">Sign In to your account</p>
+                            <form #f="ngForm" (ngSubmit)="forgot()">
+                                <h1>Forgot Password</h1>
+                                <!-- <p class="text-muted">Sign In to your account</p> -->
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="icon-user"></i></span>
@@ -16,21 +16,14 @@
                                     <!-- <input id="email" name="email" class="form-control" required [(ngModel)]="email" #name="ngModel">  -->
                                 </div>
                                 <span class="help-block" style="color:red">{{errorEmail}}</span>
-                                <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="icon-lock"></i></span>
-                                    </div>
-                                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Password" required>
-                                </div>
-                                <span class="help-block" style="color:red">{{errorPassword}}</span>
-                                <!-- <div class="row">
-                                    <div class="col-6">
-                                        <p><a href="#/pages/forgot"> Forgot Password</a></p>
-                                    </div>
-                                </div> -->
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="submit" [disabled]="f.invalid" class="btn btn-primary px-4">Login</button>
+                                        <p><a href="#/pages/login">Login</a></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" [disabled]="f.invalid" class="btn btn-primary px-4">Submit</button>
                                     </div>
                                 </div>
                             </form>

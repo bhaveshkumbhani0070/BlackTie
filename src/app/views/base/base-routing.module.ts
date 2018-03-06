@@ -17,6 +17,9 @@ import { PackageComponent } from './package/package.component';
 import { ManageComponent } from './manage/manage.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AccountComponent } from './account/account.component';
+import { AccountRequestComponent } from './account-request/account-request.component';
+import { ManageRequestComponent } from './manage-request/manage-request.component';
+import { NewEnquiriesComponent } from './new-enquiries/new-enquiries.component';
 
 const routes: Routes = [
   {
@@ -88,7 +91,28 @@ const routes: Routes = [
           title:'Account'
         }
       },
+      {
+        path:'accountRequest',
+        component:AccountRequestComponent,
+        data:{
+          title:'AccountRequest'
+        }
+      },
+      {
+        path:'manageRequest',
+        component:ManageRequestComponent,
+        data:{
+          title:'ManageRequest'
+        }
+      },
+      {
+        path:'newEnquiries',
+        component:NewEnquiriesComponent,
+        data:{
+          title:'NewEnquiries'
+        }
         
+      },
       {
         path: 'tabs',
         component: TabsComponent,

@@ -4,13 +4,13 @@ import { DataService } from '../../../data.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { OrderModule } from 'ngx-order-pipe';
-
 @Component({
-  selector: 'app-flight',
-  templateUrl: './flight.component.html',
-  styleUrls: ['./flight.component.scss']
+  selector: 'app-account-request',
+  templateUrl: './account-request.component.html',
+  styleUrls: ['./account-request.component.scss']
 })
-export class FlightComponent implements OnInit {
+
+export class AccountRequestComponent implements OnInit {
 
   data:any;
 
@@ -25,10 +25,10 @@ export class FlightComponent implements OnInit {
     this.loadData();
   }
   loadData(){
-    this.dataService.getFlight()
+    this.dataService.getNewAccountReq()
     .subscribe( data => {
-      console.log('Flight Data',data["data"]["data"]);
-      localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
+      console.log('New Account request',data);
+      // localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
   }

@@ -15,10 +15,10 @@ export class AuthenticationService {
     }
  
     login(email: string, password: string): Observable<boolean> {
-        return this.http.post('http://13.127.126.229/api/admin_login/', 
+        return this.http.post('http://13.127.205.70:8000/api/admin_login/', 
         { email: email, password: password })
             .map((response: Response) => {
-              console.log('response',response);
+                console.log('response',response);
                 // login successful if there's a jwt token in the response
                 let token = response["data"]["result"];
                 if (token) {
@@ -36,7 +36,8 @@ export class AuthenticationService {
                 }
             });
     }
- 
+    
+
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;

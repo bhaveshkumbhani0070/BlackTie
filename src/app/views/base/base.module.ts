@@ -51,6 +51,9 @@ import { PackageComponent } from './package/package.component';
 import { ManageComponent } from './manage/manage.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AccountComponent } from './account/account.component';
+import { AccountRequestComponent } from './account-request/account-request.component';
+import { ManageRequestComponent } from './manage-request/manage-request.component';
+import { NewEnquiriesComponent } from './new-enquiries/new-enquiries.component';
 
 @NgModule({
   imports: [
@@ -84,7 +87,10 @@ import { AccountComponent } from './account/account.component';
     PackageComponent,
     ManageComponent,
     NotificationComponent,
-    AccountComponent
+    AccountComponent,
+    AccountRequestComponent,
+    ManageRequestComponent,
+    NewEnquiriesComponent
   ]
 })
 export class BaseModule { }

@@ -56,10 +56,25 @@ export const navigation = [
   {
     name:'Add New Account',
     url:'/client/account',
-    icon:'fa fa-user-plus fa-lg '
+    icon:'fa fa-user-plus fa-lg'
+  },
+  {
+    name:'Account Requests',
+    url:'/client/accountRequest',
+    icon:'fa fa-user-plus fa-lg'
+  },
+  {
+    name:'Flight Requests',
+    url:'/client/manageRequest',
+    icon:'fa fa-user-plus fa-lg'
+  },
+  {
+    name:'New Enquiries',
+    url:'/client/newEnquiries',
+    icon:'fa fa-user-plus fa-lg'
   },
   
-
+  
   //APP MANAGEMENT
   {
     title: true,

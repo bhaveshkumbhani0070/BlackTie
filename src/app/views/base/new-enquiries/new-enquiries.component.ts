@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpResponse,HttpHeaders } from '@angular/common/http';
 import { DataService } from '../../../data.service';
@@ -6,11 +8,12 @@ import 'rxjs/add/operator/map';
 import { OrderModule } from 'ngx-order-pipe';
 
 @Component({
-  selector: 'app-flight',
-  templateUrl: './flight.component.html',
-  styleUrls: ['./flight.component.scss']
+  selector: 'app-new-enquiries',
+  templateUrl: './new-enquiries.component.html',
+  styleUrls: ['./new-enquiries.component.scss']
 })
-export class FlightComponent implements OnInit {
+
+export class NewEnquiriesComponent implements OnInit {
 
   data:any;
 
@@ -22,13 +25,13 @@ export class FlightComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.loadData();
+    // this.loadData();
   }
   loadData(){
-    this.dataService.getFlight()
+    this.dataService.getNewEnquiry()
     .subscribe( data => {
-      console.log('Flight Data',data["data"]["data"]);
-      localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
+      console.log('New Account request',data);
+      // localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
   }

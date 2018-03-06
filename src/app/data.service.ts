@@ -13,10 +13,10 @@ export class DataService {
 
   constructor(
     private http:HttpClient,
-    private authenticationService:AuthenticationService
+    private authenticationService:AuthenticationService,
   ) {}
-  mainUrl="http://13.127.126.229";
-
+  mainUrl="http://13.127.205.70:8000";
+  
   accessKeyId= "";
   secretAccessKey= "";
   Bucket= "";
@@ -50,10 +50,10 @@ export class DataService {
   }
 
   addNotification(id,type){
-    console.log('addNotification');
+    console.log('addNotification',id);
     return this.http.post(this.mainUrl + '/api/notification/',
     {
-      "client_ids":[id],
+      "client_ids":id,
       "txt":type,
       "heading":"Notification6"
     },
@@ -77,7 +77,7 @@ export class DataService {
   addAccount(email,phone,hours,rHours,password,fname,lname){
 
     console.log('addAccount',email,phone,hours,rHours,password,fname,lname);
-    return this.http.post('http://13.127.126.229/api/client/',
+    return this.http.post(this.mainUrl  +  '/api/client/',
     {
       "email": email,
       "password":password,
@@ -206,6 +206,35 @@ export class DataService {
   deleteAppWorks(id){
     return this.http.delete(this.mainUrl + '/api/howitworks/'+id)
   }
+  getNewAccountReq() {
+    return this.http.get(this.mainUrl + '/api/new/account/', {
+      headers: {
+        "content-type": "application/json",
+        "Authorization":"Bearer "+this.authenticationService.token
+      }
+    })
+  }
+
+  getNewManageFlightReq() {
+    return this.http.get(this.mainUrl + '/api/new/request/flights/', {
+      headers: {
+        "content-type": "application/json",
+        "Authorization":"Bearer "+this.authenticationService.token
+      }
+    })
+  }
+
+  getNewEnquiry() {
+    return this.http.get(this.mainUrl + '/api/new/request/flights/', {
+      headers: {
+        "content-type": "application/json",
+        "Authorization":"Bearer "+this.authenticationService.token
+      }
+    })
+  }
+
+  
+  
 }
 
 

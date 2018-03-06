@@ -8,6 +8,7 @@ import { RegisterComponent } from './register.component';
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { PagesRoutingModule } from './pages-routing.module';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
   imports: [ 
@@ -20,7 +21,8 @@ import { PagesRoutingModule } from './pages-routing.module';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotComponent
   ]
 })
 export class PagesModule { }

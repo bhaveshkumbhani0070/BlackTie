@@ -16,12 +16,13 @@ import { PromotionsComponent } from './promotions/promotions.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   imports: [
     CommonModule,
     ThemeRoutingModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
   ],
   declarations: [
     ColorsComponent,

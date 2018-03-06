@@ -13,6 +13,8 @@ export class NotificationComponent implements OnInit {
   data:any;
   id:string;
   type:string;
+  client="all";
+  allClient=[];
 
   constructor(
     private http: HttpClient,
@@ -22,6 +24,7 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+    this.loadManage();
   }
 
   loadData(){
@@ -33,13 +36,34 @@ export class NotificationComponent implements OnInit {
     });
 
   }
+  loadManage(){
+    this.dataService.getManage()
+    .subscribe( data => {
+      console.log('Manage data',data["data"]["data"]);
+      if(data["data"]["data"].length>0){
+        for(let i=0;i<data["data"]["data"].length;i++){
+          this.allClient.push(data["data"]["data"][i]["client_id"])
+        }
+      }
+    })
+  }
 
   addMe(){
-   this.dataService.addNotification(this.id,this.type) 
-    .subscribe(data => {
-      this.type="";
-      // console.log('addNotification',data);
-      this.loadData();
-    });
+    if(this.client=="all"){
+      this.dataService.addNotification(this.allClient,this.type) 
+      .subscribe(data => {
+        console.log('All data',data);
+        this.type="";
+        this.loadData();
+      });
+    }
+    else{
+      this.dataService.addNotification([this.id],this.type) 
+      .subscribe(data => {
+        console.log('single ',data);
+        this.type="";
+        this.loadData();
+      });
+    }
   }
 }

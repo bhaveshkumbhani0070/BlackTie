@@ -6,11 +6,12 @@ import 'rxjs/add/operator/map';
 import { OrderModule } from 'ngx-order-pipe';
 
 @Component({
-  selector: 'app-flight',
-  templateUrl: './flight.component.html',
-  styleUrls: ['./flight.component.scss']
+  selector: 'app-manage-request',
+  templateUrl: './manage-request.component.html',
+  styleUrls: ['./manage-request.component.scss']
 })
-export class FlightComponent implements OnInit {
+
+export class ManageRequestComponent implements OnInit {
 
   data:any;
 
@@ -25,10 +26,10 @@ export class FlightComponent implements OnInit {
     this.loadData();
   }
   loadData(){
-    this.dataService.getFlight()
+    this.dataService.getNewManageFlightReq()
     .subscribe( data => {
-      console.log('Flight Data',data["data"]["data"]);
-      localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
+      console.log('New Account request',data);
+      // localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
   }

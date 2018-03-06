@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../../authentication.service';
+import { AuthenticationService } from '../../../authentication.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  templateUrl: 'login.component.html'
+  templateUrl: 'forgot.component.html'
 })
-export class LoginComponent {
+export class ForgotComponent {
 
   email: string;
-  password:string;
   userForm: any;
   errorEmail:string="";
   errorPassword:string="";
@@ -41,8 +40,8 @@ export class LoginComponent {
     });
    
   }
-  logMein(){
-    console.log('email',this.email,' ',this.password);
+  forgot(){
+    console.log('email',this.email);
     if(!this.email){
       this.errorEmail="Email field is required";
       return;
@@ -59,28 +58,7 @@ export class LoginComponent {
       }
 
     }
-    if(!this.password){
-      this.errorPassword="Password field is required";
-    }
-    else{
-      if(this.password.length>8){
-        this.errorPassword="";
-      }
-      else{
-        this.errorPassword="Password must more than 8 character";
-        return;
-      }
-    }
-    this.authenticationService.login(this.email, this.password)
-    .subscribe(result => {
-        if (result === true) {
-            // login successful
-            this.router.navigate(['/dashboard']);
-        } else {
-            // login failed
-            console.log('Fail to authenticate');
-        }
-    });
+   
   }
 }
 

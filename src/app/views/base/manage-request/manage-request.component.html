@@ -1,0 +1,30 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Manage Flight Requests
+                </div>
+
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Requested Flights</th>
+                                <th>Upcoming Flights</th>
+                                <th>Completed Flights</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of data | orderBy:'first_name':true">
+                                <td>{{data.first_name}}</td>
+                                <td>{{data.last_name}}</td>
+                                <td>{{data.email}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

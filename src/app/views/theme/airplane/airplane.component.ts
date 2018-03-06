@@ -3,6 +3,7 @@ import { HttpClient,HttpResponse } from '@angular/common/http';
 import { DataService } from '../../../data.service';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
+
 import * as AWS from 'aws-sdk';
 
 @Component({
@@ -58,39 +59,40 @@ export class AirplaneComponent implements OnInit {
     console.log('file to upload',files.item(0));
     this.fileToUpload = files.item(0);
 
-    AWS.config.update({
-      accessKeyId: this.dataService.accessKeyId,
-      secretAccessKey: this.dataService.secretAccessKey,
-      region: "ap.south-1"
-      });
+    
+    // AWS.config.update({
+    //   accessKeyId: this.dataService.accessKeyId,
+    //   secretAccessKey: this.dataService.secretAccessKey,
+    //   region: "ap.south-1"
+    //   });
       
-      var s3 = new AWS.S3();
-      var params = {
-          Bucket: this.dataService.Bucket,
-          Key: this.fileToUpload.name,
-          Body: this.fileToUpload,
-          ContentType:'image/jpeg',
-          ACL: "public-read",
-          AccessControlPolicy: {
-            Grants: [
-            {
-                Grantee: {
-                Type: 'AllUsers', 
-                },
-                Permission: 'READ'
-            },
-            ],
-        },
-      };
-      s3.upload(params, function (err, res) {
-          if (err) {
-              console.log("Error uploading data: ", err);
-          } else {
-              console.log("Successfully uploaded data to myBucket/myKey",res.Location);
-              this.imagePath=res.Location;
-              localStorage.setItem("imagePath",res.Location);
-          }
-      });
+    //   var s3 = new AWS.S3();
+    //   var params = {
+    //       Bucket: this.dataService.Bucket,
+    //       Key: this.fileToUpload.name,
+    //       Body: this.fileToUpload,
+    //       ContentType:'image/jpeg',
+    //       ACL: "public-read",
+    //       AccessControlPolicy: {
+    //         Grants: [
+    //         {
+    //             Grantee: {
+    //             Type: 'AllUsers', 
+    //             },
+    //             Permission: 'READ'
+    //         },
+    //         ],
+    //     },
+    //   };
+    //   s3.upload(params, function (err, res) {
+    //       if (err) {
+    //           console.log("Error uploading data: ", err);
+    //       } else {
+    //           console.log("Successfully uploaded data to myBucket/myKey",res.Location);
+    //           this.imagePath=res.Location;
+    //           localStorage.setItem("imagePath",res.Location);
+    //       }
+    //   });
   }
 
     fileEvent(files: FileList){
