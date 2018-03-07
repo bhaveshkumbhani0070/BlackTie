@@ -7,7 +7,125 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table">
+                    <tabset>
+                        <tab heading="Requested Flights">
+                            <!-- {
+                                    "client_id":"00016",
+                                    "flight_from":"2",
+                                    "flight_to":"3",
+                                    "flight_type":"two_way",
+                                    "plane_type":"1",
+                                    "number_of_passengers":3,
+                                    "date_time":"2018-02-19 00:00:00",
+                                    "return_date_time":"2018-02-20 00:00:00",
+                                    "request_type":"requested"
+                                } -->
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="date_time" [(ngModel)]="date_time" placeholder="Date Time">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
+                                </div>
+                            </div>
+
+                            <div class="row float-right">
+                                <button type="button" class="btn btn-primary" (click)="addRequest('requested')">Create Request</button>
+                            </div>
+                        </tab>
+                        <tab heading="Upcoming Flights">
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="date_time" [(ngModel)]="date_time" placeholder="Date Time">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
+                                </div>
+                            </div>
+
+                            <div class="row float-right">
+                                <button type="button" class="btn btn-primary" (click)="addRequest('upcoming')">Create Request</button>
+                            </div>
+                        </tab>
+                        <tab heading="Completed Flights">
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="date_time" [(ngModel)]="date_time" placeholder="Date Time">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
+                                </div>
+                            </div>
+
+                            <div class="row float-right">
+                                <button type="button" class="btn btn-primary" (click)="addRequest('completed')">Create Request</button>
+                            </div>
+                        </tab>
+                    </tabset>
+                    <!-- <table class="table">
                         <thead>
                             <tr>
                                 <th>Requested Flights</th>
@@ -22,7 +140,7 @@
                                 <td>{{data.email}}</td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>

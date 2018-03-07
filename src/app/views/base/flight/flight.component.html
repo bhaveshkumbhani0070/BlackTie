@@ -19,6 +19,7 @@
                                 <th>Time</th>
                                 <th>Plan Type</th>
                                 <th>Passengers</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,11 @@
                                 <td>{{data.date_time | date:'hh:mm:ss'}}</td>
                                 <td>{{data.plane_type}}</td>
                                 <td>{{data.number_of_passengers}}</td>
+                                <td>
+                                    <select class="form-control" [ngModel]="selectedDevice" (ngModelChange)="onChange($event)">
+                                            <option [value]="i" *ngFor="let i of statuses">{{i}}</option>
+                                    </select>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

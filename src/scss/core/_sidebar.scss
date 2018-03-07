@@ -121,7 +121,7 @@
         }
         &.active {
             color: black;
-            background: white;
+            background: #63c2de;
             @include borders($sidebar-nav-link-active-borders);
             i {
                 color: black;
@@ -129,7 +129,7 @@
         }
         &:hover {
             color: black;
-            background: $sidebar-nav-link-hover-bg;
+            background: #63c2de;
             @include borders($sidebar-nav-link-hover-borders);
             i {
                 color: black;
@@ -184,7 +184,7 @@
             max-height: 1500px;
         }
         .nav-link {
-            color: $sidebar-nav-dropdown-color;
+            color: black;
             border-left: 0 !important;
         }
         >.nav-link.nav-dropdown-toggle::before {

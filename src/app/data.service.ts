@@ -39,6 +39,18 @@ export class DataService {
         }
       })
   }
+  updateFlight(status){
+    return this.http.post(this.mainUrl + '',
+    {
+      "status":status
+    },
+    {
+      headers: {
+        "content-type": "application/json",
+        "Authorization":"Bearer "+this.authenticationService.token
+      }
+    });
+  }
 
   getPackage(){
     return this.http.get(this.mainUrl + '/api/bookings/', {
@@ -231,6 +243,27 @@ export class DataService {
         "Authorization":"Bearer "+this.authenticationService.token
       }
     })
+  }
+
+  addFlightReq(client_id,flight_from,flight_to,flight_type,plane_type,number_of_passengers,date_time,return_date_time,request_type){
+    return this.http.post(this.mainUrl  +  '/api/new/request/flights/',
+    {
+      "client_id":client_id,
+      "flight_from":flight_from,
+      "flight_to":flight_to,
+      "flight_type":flight_type,
+      "plane_type":plane_type,
+      "number_of_passengers":number_of_passengers,
+      "date_time":date_time,
+      "return_date_time":return_date_time,
+      "request_type":request_type
+    },
+    {
+      headers: {
+        "content-type": "application/json",
+        "Authorization":"Bearer "+this.authenticationService.token
+      }
+    });
   }
 
   getNewEnquiry() {

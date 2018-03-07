@@ -61,17 +61,34 @@ export const navigation = [
   {
     name:'Account Requests',
     url:'/client/accountRequest',
-    icon:'fa fa-user-plus fa-lg'
+    icon:'fa fa-address-book fa-lg'
   },
   {
     name:'Flight Requests',
     url:'/client/manageRequest',
-    icon:'fa fa-user-plus fa-lg'
+    icon:'fa fa-plus-circle fa-lg',
+    // children: [
+    //   {
+    //     name: 'Requested Flights',
+    //     url: '/buttons/buttons',
+    //     icon: 'icon-cursor'
+    //   },
+    //   {
+    //     name: 'Upcoming Flights',
+    //     url: '/buttons/dropdowns',
+    //     icon: 'icon-cursor'
+    //   },
+    //   {
+    //     name: 'Completed Flights',
+    //     url: '/buttons/social-buttons',
+    //     icon: 'icon-cursor'
+    //   }
+    // ]
   },
   {
     name:'New Enquiries',
     url:'/client/newEnquiries',
-    icon:'fa fa-user-plus fa-lg'
+    icon:'fa fa-question-circle fa-lg'
   },
   
   

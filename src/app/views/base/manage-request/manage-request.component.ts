@@ -14,6 +14,14 @@ import { OrderModule } from 'ngx-order-pipe';
 export class ManageRequestComponent implements OnInit {
 
   data:any;
+  client_id:string;
+  flight_from:string;
+  flight_to:string;
+  flight_type:string;
+  plane_type:string;
+  number_of_passengers:string;
+  date_time:string;
+  return_date_time:string;
 
   constructor(
     private http: HttpClient,
@@ -23,15 +31,30 @@ export class ManageRequestComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.loadData();
+    // this.loadData();
   }
   loadData(){
     this.dataService.getNewManageFlightReq()
     .subscribe( data => {
       console.log('New Account request',data);
-      // localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
+  }
+
+  addRequest(status){
+  // client_id,flight_from,flight_to,flight_type,plane_type,number_of_passengers,date_time,return_date_time,request_type
+  this.dataService.addFlightReq(this.client_id,this.flight_from,this.flight_to,this.flight_type,this.plane_type,this.number_of_passengers,this.date_time,this.return_date_time,status)
+  .subscribe( data => {
+    this.client_id="";
+    this.flight_from="";
+    this.flight_to="";
+    this.flight_type="";
+    this.plane_type="";
+    this.number_of_passengers="";
+    this.date_time="";
+    this.return_date_time="";
+    console.log('Manage request is created',status, data);
+  })
   }
 }
 

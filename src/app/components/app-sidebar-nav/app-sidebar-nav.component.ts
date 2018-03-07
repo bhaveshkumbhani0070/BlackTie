@@ -47,7 +47,7 @@ import { Router } from '@angular/router';
       <li [ngClass]="hasClass() ? 'nav-item nav-dropdown ' + item.class : 'nav-item nav-dropdown'"
           [class.open]="isActive()"
           routerLinkActive="open"
-          appNavDropdown>
+          appNavDropdown  style="font-size: 15px;">
         <app-sidebar-nav-dropdown [link]='item'></app-sidebar-nav-dropdown>
       </li>
     </ng-template>

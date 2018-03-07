@@ -25,7 +25,7 @@ export class NewEnquiriesComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.loadData();
+    this.loadData();
   }
   loadData(){
     this.dataService.getNewEnquiry()

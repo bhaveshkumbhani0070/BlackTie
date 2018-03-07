@@ -13,6 +13,8 @@ import { OrderModule } from 'ngx-order-pipe';
 export class FlightComponent implements OnInit {
 
   data:any;
+  selectedDevice="two";
+  statuses=["completed", "upcoming", "requested"];
 
   constructor(
     private http: HttpClient,
@@ -30,6 +32,13 @@ export class FlightComponent implements OnInit {
       console.log('Flight Data',data["data"]["data"]);
       localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
+    })
+  }
+  onChange(selected){
+    console.log('data',selected);
+    this.dataService.updateFlight(selected)
+    .subscribe( data => {
+        console.log('updated flight',data);
     })
   }
 }
