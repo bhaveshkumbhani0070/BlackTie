@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { DataService } from './data.service';
 import { AuthGuard } from './auth.guard'; 
 import { AuthenticationService } from './authentication.service';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
 
 // Import containers
 import {
@@ -75,7 +78,18 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(
+      {
+        apiKey: "",
+        authDomain: "",
+        databaseURL: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: ""
+      }
+    ),
+    AngularFireDatabaseModule
   ],
   declarations: [
     AppComponent,

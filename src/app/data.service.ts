@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import { AuthenticationService } from './authentication.service';
+import {AngularFireDatabase} from 'angularfire2/database';
+import * as firebase from 'firebase';
+import { FileUpload } from './fileupload';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,12 +17,18 @@ export class DataService {
   constructor(
     private http:HttpClient,
     private authenticationService:AuthenticationService,
+    private db: AngularFireDatabase
   ) {}
   mainUrl="http://13.127.205.70:8000";
-  
+  private basePath = '/uploads';
+  fileUrl="";
+
   accessKeyId= "";
   secretAccessKey= "";
   Bucket= "";
+
+  
+  
 
   // Client management
   getFlight() {
@@ -120,12 +129,12 @@ export class DataService {
   }
   // App management
 
-  addAirplane(id,name,img){
+  addAirplane(id,name){
     return this.http.post(this.mainUrl + '/api/airplanemenu/',
     {
       "airplane_name": name,
       "number_of_seat": id,
-      "airplane_photo":img
+      "airplane_photo":this.fileUrl
     })
   }
   getAirplane(){
@@ -165,11 +174,11 @@ export class DataService {
     return this.http.delete(this.mainUrl + '/api/promotiondetails/'+id)
   }
 
-  addAppSlider(file){
+  addAppSlider(){
     return this.http.post(this.mainUrl + '/api/sliderbanner/',
     {
       "banner_name":"slider 5",
-      "banner_image": file
+      "banner_image": this.fileUrl
     })
   }
   getAppSlider(){
@@ -234,6 +243,55 @@ export class DataService {
   }
 
   
+
+  // File upload to Firebase
+
+  pushFileToStorage(fileUpload: FileUpload, progress: {percentage: number}) {
+    const storageRef = firebase.storage().ref();
+    const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
+ 
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) => {
+        // in progress
+        const snap = snapshot as firebase.storage.UploadTaskSnapshot
+        progress.percentage = Math.round((snap.bytesTransferred / snap.totalBytes) * 100)
+      },
+      (error) => {
+        // fail
+        console.log(error)
+      },
+      () => {
+        // success
+        console.log('uploaded success',uploadTask.snapshot.downloadURL);
+        this.fileUrl=uploadTask.snapshot.downloadURL;
+
+        fileUpload.url = uploadTask.snapshot.downloadURL
+        fileUpload.name = fileUpload.file.name
+        this.saveFileData(fileUpload)
+      }
+    );
+  }
+
+  private saveFileData(fileUpload: FileUpload) {
+    this.db.list(`${this.basePath}/`).push(fileUpload)
+  }
+  
+  deleteFileUpload(fileUpload: FileUpload) {
+    this.deleteFileDatabase(fileUpload.$key)
+      .then(() => {
+        this.deleteFileStorage(fileUpload.name)
+      })
+      .catch(error => console.log(error))
+  }
+ 
+  private deleteFileDatabase(key: string) {
+    return this.db.list(`${this.basePath}/`).remove(key)
+  }
+ 
+  private deleteFileStorage(name: string) {
+    const storageRef = firebase.storage().ref()
+    storageRef.child(`${this.basePath}/${name}`).delete()
+  }
   
 }
 

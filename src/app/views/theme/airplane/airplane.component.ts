@@ -3,6 +3,7 @@ import { HttpClient,HttpResponse } from '@angular/common/http';
 import { DataService } from '../../../data.service';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { FileUpload } from '../../../fileupload';
 
 import * as AWS from 'aws-sdk';
 
@@ -22,6 +23,9 @@ export class AirplaneComponent implements OnInit {
   file:any;
   imagePath:string;
 
+  currentFileUpload: FileUpload
+  progress: {percentage: number} = {percentage: 0}
+
   public primaryModal;
   constructor(
     private http: HttpClient,
@@ -38,17 +42,16 @@ export class AirplaneComponent implements OnInit {
     });
   }
 
-  deleteMe(id){
-    this.dataService.deleteAirplane(id)
+  deleteMe(d){
+    this.dataService.deleteAirplane(d.id)
     .subscribe(data => {
       this.loadData();
     });
   }
 
   AddMe(){
-    this.dataService.addAirplane(this.id,this.name,localStorage.getItem('imagePath'))
+    this.dataService.addAirplane(this.id,this.name)
     .subscribe(data => {
-      localStorage.setItem('imagePath','');
       this.id="";
       this.name="";
       this.loadData();
@@ -59,6 +62,10 @@ export class AirplaneComponent implements OnInit {
     console.log('file to upload',files.item(0));
     this.fileToUpload = files.item(0);
 
+    const file = files.item(0);
+    
+     this.currentFileUpload = new FileUpload(file);
+    this.dataService.pushFileToStorage(this.currentFileUpload, this.progress)
     
     // AWS.config.update({
     //   accessKeyId: this.dataService.accessKeyId,
