@@ -1,6 +1,6 @@
 // Angular
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CardsComponent } from './cards.component';
@@ -54,11 +54,14 @@ import { AccountComponent } from './account/account.component';
 import { AccountRequestComponent } from './account-request/account-request.component';
 import { ManageRequestComponent } from './manage-request/manage-request.component';
 import { NewEnquiriesComponent } from './new-enquiries/new-enquiries.component';
+import { ShowErrorComponent } from './show-error/show-error.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     BaseRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule,
@@ -90,7 +93,8 @@ import { NewEnquiriesComponent } from './new-enquiries/new-enquiries.component';
     AccountComponent,
     AccountRequestComponent,
     ManageRequestComponent,
-    NewEnquiriesComponent
+    NewEnquiriesComponent,
+    ShowErrorComponent
   ]
 })
 export class BaseModule { }

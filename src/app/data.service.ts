@@ -39,8 +39,8 @@ export class DataService {
         }
       })
   }
-  updateFlight(status){
-    return this.http.post(this.mainUrl + '',
+  updateFlight(id,status){
+    return this.http.put(this.mainUrl + '/api/update/flight/request/'+id,
     {
       "status":status
     },
@@ -246,6 +246,18 @@ export class DataService {
   }
 
   addFlightReq(client_id,flight_from,flight_to,flight_type,plane_type,number_of_passengers,date_time,return_date_time,request_type){
+    var data={
+      "client_id":client_id,
+      "flight_from":flight_from,
+      "flight_to":flight_to,
+      "flight_type":flight_type,
+      "plane_type":plane_type,
+      "number_of_passengers":number_of_passengers,
+      "date_time":date_time,
+      "return_date_time":return_date_time,
+      "request_type":request_type
+    }
+    console.log('data',data);
     return this.http.post(this.mainUrl  +  '/api/new/request/flights/',
     {
       "client_id":client_id,

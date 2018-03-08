@@ -14,14 +14,15 @@ import { OrderModule } from 'ngx-order-pipe';
 export class ManageRequestComponent implements OnInit {
 
   data:any;
-  client_id:string;
+  client_id:string="";
   flight_from:string;
   flight_to:string;
-  flight_type:string;
+  flight_type:string="";
   plane_type:string;
   number_of_passengers:string;
   date_time:string;
   return_date_time:string;
+  client_ids=[];
 
   constructor(
     private http: HttpClient,
@@ -31,13 +32,14 @@ export class ManageRequestComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.loadData();
+    this.loadData();
   }
   loadData(){
-    this.dataService.getNewManageFlightReq()
+    this.dataService.getManage()
     .subscribe( data => {
       console.log('New Account request',data);
-      this.data=data["data"]["data"];
+      this.client_ids=data["data"]["data"];
+      // this.data=data["data"]["data"];
     })
   }
 

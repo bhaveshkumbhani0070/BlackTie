@@ -33,7 +33,7 @@
                                 <td>{{data.plane_type}}</td>
                                 <td>{{data.number_of_passengers}}</td>
                                 <td>
-                                    <select class="form-control" [ngModel]="selectedDevice" (ngModelChange)="onChange($event)">
+                                    <select class="form-control" [ngModel]="selectedDevice" (ngModelChange)="onChange(data.id,$event)">
                                             <option [value]="i" *ngFor="let i of statuses">{{i}}</option>
                                     </select>
                                 </td>

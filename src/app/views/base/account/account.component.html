@@ -6,6 +6,52 @@
                     Add New Account
                 </div>
                 <div class="card-body">
+                    <!-- <form [formGroup]="myForm" (ngSubmit)="register(myForm)" novalidate>
+                        <p> Is "myForm" valid? {{myForm.valid}} </p>
+
+                        <div>
+                            <label>Name</label>
+                            <input type="text" name="name" formControlName="name">
+                            <show-errors [control]="myForm.controls.name"></show-errors>
+                        </div>
+
+                        <div>
+                            <label>Birth Year</label>
+                            <input type="text" name="birthYear" formControlName="birthYear">
+                            <show-errors [control]="myForm.controls.birthYear"></show-errors>
+                        </div>
+
+                        <div formGroupName="location">
+                            <h3>Location</h3>
+                            <div>
+                                <label>Country</label>
+                                <input type="text" name="country" formControlName="country">
+                                <show-errors [control]="myForm.controls.location.controls.country"></show-errors>
+                            </div>
+                            <div>
+                                <label>City</label>
+                                <input type="text" name="city" formControlName="city">
+                            </div>
+                        </div>
+
+                        <div formArrayName="phoneNumbers">
+                            <h3>Phone numbers</h3>
+                            <div *ngFor="let phoneNumberControl of myForm.controls.phoneNumbers.controls; let i=index;">
+                                <label>Phone number {{i + 1}}</label>
+                                <input type="text" name="phoneNumber[{{phoneId}}]" [formControlName]="i">
+                                <button type="button" (click)="remove(i); myForm.markAsTouched()">remove</button>
+                                <show-errors [control]="phoneNumberControl"></show-errors>
+                            </div>
+                            <button type="button" (click)="add(); myForm.markAsTouched()">Add phone number</button>
+                        </div>
+
+                        <show-errors [control]="myForm"></show-errors>
+
+                        <pre>{{myForm.value | json}}</pre>
+                        <button type="submit" [disabled]="myForm.invalid || myForm.pending">Register</button>
+                        <button type="button" (click)="printMyForm()">Print to console</button>
+                    </form> -->
+
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <input type="text" class="form-control" id="email" [(ngModel)]="email" placeholder="Email">
