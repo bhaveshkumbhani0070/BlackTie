@@ -37,16 +37,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <!-- <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul> -->
                 </div>
             </div>
         </div>
@@ -63,19 +53,23 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="description" id="city" placeholder="Description">
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="validity" id="postal-code" placeholder="Validity(YYYY-MM-DD)">
+            <form [formGroup]="myForm" (ngSubmit)="AddMe()" novalidate>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="description" name="description" formControlName="description" placeholder="Description">
+                            <show-errors [control]="myForm.controls.description"></show-errors>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="validity" name="validity" formControlName="validity" placeholder="Validity(YYYY-MM-DD)">
+                            <show-errors [control]="myForm.controls.validity"></show-errors>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="AddMe()" (click)="largeModal.hide()">Add Promotion</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary" (click)="largeModal.hide()">Add Promotion</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

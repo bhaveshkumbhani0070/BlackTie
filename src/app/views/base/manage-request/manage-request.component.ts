@@ -4,6 +4,9 @@ import { DataService } from '../../../data.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { OrderModule } from 'ngx-order-pipe';
+import { FormGroup, FormControl, FormArray, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { CustomeValidateComponent } from '../show-error/custome-validate.component';
+
 
 @Component({
   selector: 'app-manage-request',
@@ -23,15 +26,28 @@ export class ManageRequestComponent implements OnInit {
   date_time:string;
   return_date_time:string;
   client_ids=[];
+  public myForm: FormGroup;
 
   constructor(
     private http: HttpClient,
-    private dataService:DataService
-  ) {
-  
-   }
+    private dataService:DataService,
+    private fb: FormBuilder
+  ) {  }
 
   ngOnInit() {
+    this.myForm = this.fb.group({
+      'client_id':['',Validators.required],
+      'flight_from':['',Validators.required],
+      'flight_to':['',Validators.required],
+      'flight_type':['',Validators.required],
+      'number_of_passengers':['',Validators.required],
+      'date_time':['',Validators.required],
+      'return_date_time':['',Validators.required],
+      'plane_type':['',Validators.required]
+    },
+    {
+      validator: Validators.compose([])
+    });
     this.loadData();
   }
   loadData(){

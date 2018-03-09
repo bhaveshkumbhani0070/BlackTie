@@ -67,27 +67,33 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="id" id="city" placeholder="Package ID">
+            <form [formGroup]="myForm" (ngSubmit)="AddMe()" novalidate>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="id" name="id" formControlName="id" placeholder="Package ID">
+                            <show-errors [control]="myForm.controls.id"></show-errors>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="hours" name="hours" formControlName="hours" placeholder="Number of Hours">
+                            <show-errors [control]="myForm.controls.hours"></show-errors>
+                        </div>
                     </div>
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="hours" id="postal-code" placeholder="Number of Hours">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="duration" name="duration" formControlName="duration" placeholder="Duration of Package">
+                            <show-errors [control]="myForm.controls.duration"></show-errors>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="cost" name="cost" formControlName="cost" placeholder="Cost of Package">
+                            <show-errors [control]="myForm.controls.cost"></show-errors>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="duration" id="city" placeholder="Duration of Package">
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="cost" id="postal-code" placeholder="Cost of Package">
-                    </div>
+                <div class="modal-footer">
+                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary" (click)="largeModal.hide()">Add Package</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="AddMe()" (click)="largeModal.hide()">Add Package</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

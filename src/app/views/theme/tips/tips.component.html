@@ -65,19 +65,23 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="title" id="city" placeholder="Title">
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <textarea id="textarea-input" name="textarea-input" [(ngModel)]="description" rows="2" class="form-control" placeholder="Description"></textarea>
+            <form [formGroup]="myForm" (ngSubmit)="AddMe()" novalidate>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="title" name="title" formControlName="title" placeholder="Title">
+                            <show-errors [control]="myForm.controls.title"></show-errors>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <textarea name="description" formControlName="description" [(ngModel)]="description" rows="2" class="form-control" placeholder="Description"></textarea>
+                            <show-errors [control]="myForm.controls.description"></show-errors>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="AddMe()" (click)="largeModal.hide()">Add Tip</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary" (click)="largeModal.hide()">Add Tip</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

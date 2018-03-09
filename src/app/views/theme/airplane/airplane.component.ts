@@ -4,6 +4,9 @@ import { DataService } from '../../../data.service';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FileUpload } from '../../../fileupload';
+import { FormGroup, FormControl, FormArray, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { CustomeValidateComponent } from '../show-error/custome-validate.component';
+
 
 import * as AWS from 'aws-sdk';
 
@@ -18,6 +21,7 @@ export class AirplaneComponent implements OnInit {
   name:string;
   id:string;
   fileToUpload: File = null;
+  public myForm: FormGroup;
 
   myfile:any;
   file:any;
@@ -29,10 +33,18 @@ export class AirplaneComponent implements OnInit {
   public primaryModal;
   constructor(
     private http: HttpClient,
-    private dataService:DataService
+    private dataService:DataService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
+    this.myForm = this.fb.group({
+      'name':['',Validators.required],
+      'id':['',Validators.required]
+    },
+    {
+      validator: Validators.compose([])
+    });
     this.loadData(); 
   }
   loadData(){

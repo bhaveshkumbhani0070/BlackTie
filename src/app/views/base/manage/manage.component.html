@@ -51,19 +51,23 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="hours" id="city" placeholder="Total Hours">
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="rHours" id="postal-code" placeholder="Remaining Hours">
+            <form [formGroup]="myForm" (ngSubmit)="UpdateMe(myForm)" novalidate>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="hours" name="hours" formControlName="hours" placeholder="Total Hours">
+                            <show-errors [control]="myForm.controls.hours"></show-errors>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="rHours" name="rHours" formControlName="rHours" placeholder="Remaining Hours">
+                            <show-errors [control]="myForm.controls.rHours"></show-errors>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="UpdateMe()" (click)="largeModal.hide()">Save Changes</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary" (click)="largeModal.hide()">Save Changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

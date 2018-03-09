@@ -20,7 +20,7 @@ export class AccountComponent implements OnInit {
   password:string;
   fname:string;
   lname:string;
-  private myForm: FormGroup;
+  public myForm: FormGroup;
 
   constructor(
     private dataService:DataService,

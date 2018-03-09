@@ -14,7 +14,9 @@ import { WorksComponent } from './works/works.component';
 import { TipsComponent } from './tips/tips.component';
 import { PromotionsComponent } from './promotions/promotions.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ShowErrorComponent } from './show-error/show-error.component';
+
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ThemeRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     ModalModule.forRoot(),
   ],
   declarations: [
@@ -32,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     PackagesComponent,
     WorksComponent,
     TipsComponent,
-    PromotionsComponent
+    PromotionsComponent,
+    ShowErrorComponent
   ]
 })
 export class ThemeModule { }

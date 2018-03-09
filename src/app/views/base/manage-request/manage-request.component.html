@@ -9,147 +9,176 @@
                 <div class="card-body">
                     <tabset>
                         <tab heading="Requested Flights">
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <!-- <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id"> -->
-                                    <select class="form-control" [(ngModel)]="client_id">
-                                        <option value="">Client Id</option>    
-                                        <option [value]="i.client_id" *ngFor="let i of client_ids">{{i.client_id}}</option>
-                                    </select>
+                            <form [formGroup]="myForm" (ngSubmit)="addRequest('requested')" novalidate>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <!-- <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id"> -->
+                                        <select class="form-control" name="client_id" formControlName="client_id" [(ngModel)]="client_id">
+                                            <option value="">Client Id</option>    
+                                            <option [value]="i.client_id" *ngFor="let i of client_ids">{{i.client_id}}</option>
+                                        </select>
+                                        <show-errors [control]="myForm.controls.client_id"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="flight_from" formControlName="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                        <show-errors [control]="myForm.controls.flight_from"></show-errors>
+                                    </div>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="flight_to" formControlName="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                        <show-errors [control]="myForm.controls.flight_to"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type"> -->
+                                        <select class="form-control" name="flight_type" formControlName="flight_type" [(ngModel)]="flight_type">
+                                            <option value="">Flight Type</option>
+                                            <option value="one_way" >One Way</option>
+                                            <option value="two_way" >Two Way</option>
+                                        </select>
+                                        <show-errors [control]="myForm.controls.flight_type"></show-errors>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="number_of_passengers" formControlName="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                        <show-errors [control]="myForm.controls.number_of_passengers"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="date_time" formControlName="date_time" [(ngModel)]="date_time" placeholder="Date Time">
+                                        <show-errors [control]="myForm.controls.date_time"></show-errors>
+                                    </div>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <!-- <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type"> -->
-                                    <select class="form-control" [(ngModel)]="flight_type">
-                                        <option value="">Flight Type</option>
-                                        <option value="one_way" >One Way</option>
-                                        <option value="two_way" >Two Way</option>
-                                    </select>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="return_date_time" formControlName="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
+                                        <show-errors [control]="myForm.controls.return_date_time"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="plane_type" formControlName="plane_type" [(ngModel)]="plane_type" placeholder="Plane Type">
+                                        <show-errors [control]="myForm.controls.plane_type"></show-errors>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                <div class="row float-right">
+                                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">Create Request</button>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="date_time" [(ngModel)]="date_time" placeholder="Date Time">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="plane_type" placeholder="Plane Type">
-                                </div>
-                            </div>
-
-                            <div class="row float-right">
-                                <button type="button" class="btn btn-primary" (click)="addRequest('requested')">Create Request</button>
-                            </div>
+                            </form>
                         </tab>
 
                         <tab heading="Upcoming Flights">
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <!-- <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id"> -->
-                                    <select class="form-control" [(ngModel)]="client_id">
-                                                <option value="">Client Id</option>    
-                                                <option [value]="i.client_id" *ngFor="let i of client_ids">{{i.client_id}}</option>
-                                            </select>
+                            <form [formGroup]="myForm" (ngSubmit)="addRequest('upcoming')" novalidate>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <!-- <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id"> -->
+                                        <select class="form-control" name="client_id" formControlName="client_id" [(ngModel)]="client_id">
+                                                    <option value="">Client Id</option>    
+                                                    <option [value]="i.client_id" *ngFor="let i of client_ids">{{i.client_id}}</option>
+                                                </select>
+                                        <show-errors [control]="myForm.controls.client_id"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="flight_from" formControlName="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                        <show-errors [control]="myForm.controls.flight_from"></show-errors>
+                                    </div>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="flight_to" formControlName="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                        <show-errors [control]="myForm.controls.flight_to"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type"> -->
+                                        <select class="form-control" name="flight_type" formControlName="flight_type" [(ngModel)]="flight_type">
+                                                    <option value="">Flight Type</option>
+                                                    <option value="one_way" >One Way</option>
+                                                    <option value="two_way" >Two Way</option>
+                                                </select>
+                                        <show-errors [control]="myForm.controls.flight_type"></show-errors>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="number_of_passengers" formControlName="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                        <show-errors [control]="myForm.controls.number_of_passengers"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="date_time" formControlName="date_time" [(ngModel)]="date_time" placeholder="Date Time">
+                                        <show-errors [control]="myForm.controls.date_time"></show-errors>
+                                    </div>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <!-- <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type"> -->
-                                    <select class="form-control" [(ngModel)]="flight_type">
-                                                <option value="">Flight Type</option>
-                                                <option value="one_way" >One Way</option>
-                                                <option value="two_way" >Two Way</option>
-                                            </select>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="return_date_time" formControlName="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
+                                        <show-errors [control]="myForm.controls.return_date_time"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="plane_type" formControlName="plane_type" [(ngModel)]="plane_type" placeholder="Plane Type">
+                                        <show-errors [control]="myForm.controls.plane_type"></show-errors>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                <div class="row float-right">
+                                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">Create Request</button>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="date_time" [(ngModel)]="date_time" placeholder="Date Time">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="plane_type" placeholder="Plane Type">
-                                </div>
-                            </div>
+                            </form>
 
-                            <div class="row float-right">
-                                <button type="button" class="btn btn-primary" (click)="addRequest('upcoming')">Create Request</button>
-                            </div>
                         </tab>
 
                         <tab heading="Completed Flights">
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <!-- <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id"> -->
-                                    <select class="form-control" [(ngModel)]="client_id">
-                                                <option value="">Client Id</option>    
-                                                <option [value]="i.client_id" *ngFor="let i of client_ids">{{i.client_id}}</option>
-                                            </select>
+                            <form [formGroup]="myForm" (ngSubmit)="addRequest('completed')" novalidate>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <!-- <input type="text" class="form-control" id="client_id" [(ngModel)]="client_id" placeholder="Client Id"> -->
+                                        <select class="form-control" name="client_id" formControlName="client_id" [(ngModel)]="client_id">
+                                                            <option value="">Client Id</option>    
+                                                            <option [value]="i.client_id" *ngFor="let i of client_ids">{{i.client_id}}</option>
+                                                        </select>
+                                        <show-errors [control]="myForm.controls.client_id"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="flight_from" formControlName="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                        <show-errors [control]="myForm.controls.flight_from"></show-errors>
+                                    </div>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="flight_from" [(ngModel)]="flight_from" placeholder="Flight From">
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="flight_to" formControlName="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                        <show-errors [control]="myForm.controls.flight_to"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <!-- <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type"> -->
+                                        <select class="form-control" name="flight_type" formControlName="flight_type" [(ngModel)]="flight_type">
+                                                            <option value="">Flight Type</option>
+                                                            <option value="one_way" >One Way</option>
+                                                            <option value="two_way" >Two Way</option>
+                                                        </select>
+                                        <show-errors [control]="myForm.controls.flight_type"></show-errors>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="flight_to" [(ngModel)]="flight_to" placeholder="Flight To">
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="number_of_passengers" formControlName="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                        <show-errors [control]="myForm.controls.number_of_passengers"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="date_time" formControlName="date_time" [(ngModel)]="date_time" placeholder="Date Time">
+                                        <show-errors [control]="myForm.controls.date_time"></show-errors>
+                                    </div>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <!-- <input type="text" class="form-control" id="flight_type" [(ngModel)]="flight_type" placeholder="Flight Type"> -->
-                                    <select class="form-control" [(ngModel)]="flight_type">
-                                                <option value="">Flight Type</option>
-                                                <option value="one_way" >One Way</option>
-                                                <option value="two_way" >Two Way</option>
-                                            </select>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="return_date_time" formControlName="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
+                                        <show-errors [control]="myForm.controls.return_date_time"></show-errors>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <input type="text" class="form-control" name="plane_type" formControlName="plane_type" [(ngModel)]="plane_type" placeholder="Plane Type">
+                                        <show-errors [control]="myForm.controls.plane_type"></show-errors>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="number_of_passengers" [(ngModel)]="number_of_passengers" placeholder="Number Of Passengers">
+                                <div class="row float-right">
+                                    <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">Create Request</button>
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="date_time" [(ngModel)]="date_time" placeholder="Date Time">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" class="form-control" id="return_date_time" [(ngModel)]="plane_type" placeholder="Plane Type">
-                                </div>
-                            </div>
+                            </form>
 
-                            <div class="row float-right">
-                                <button type="button" class="btn btn-primary" (click)="addRequest('completed')">Create Request</button>
-                            </div>
                         </tab>
 
                     </tabset>
