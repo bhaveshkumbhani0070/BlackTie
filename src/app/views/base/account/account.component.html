@@ -52,42 +52,46 @@
                         <button type="button" (click)="printMyForm()">Print to console</button>
                     </form> -->
 
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="email" [(ngModel)]="email" placeholder="Email">
+                    <form [formGroup]="myForm" (ngSubmit)="addAccount(myForm)" novalidate>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" name="email" formControlName="email" class="form-control" [(ngModel)]="email" placeholder="Email">
+                                <show-errors [control]="myForm.controls.email"></show-errors>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="phone" formControlName="phone" [(ngModel)]="phone" placeholder="Phone Number">
+                                <show-errors [control]="myForm.controls.phone"></show-errors>
+                            </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="phone number" [(ngModel)]="phone" placeholder="Phone Number">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="fname" formControlName="fname" [(ngModel)]="fname" placeholder="First Name">
+                                <show-errors [control]="myForm.controls.fname"></show-errors>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="lname" formControlName="lname" [(ngModel)]="lname" placeholder="Last Name">
+                                <show-errors [control]="myForm.controls.lname"></show-errors>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="hours" [(ngModel)]="fname" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="lname" placeholder="Last Name">
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="hours" [(ngModel)]="hours" placeholder="Package Hours">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="hours" formControlName="hours" [(ngModel)]="hours" placeholder="Package Hours">
+                                <show-errors [control]="myForm.controls.hours"></show-errors>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="rHours" formControlName="rHours" [(ngModel)]="rHours" placeholder="Remaining Hours">
+                                <show-errors [control]="myForm.controls.rHours"></show-errors>
+                            </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="rHours" placeholder="Remaining Hours">
+
+                        <div class="row" style="margin:3px 0px 13px 0px;">
+                            Dear Client, You can now download BlackTie mobile app from appstore and login with your email address to access your account.
                         </div>
-                    </div>
-                    <!-- <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
+                        <div class="row float-right">
+                            <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">ADD & NOTIFY CLIENT</button>
                         </div>
-                    </div> -->
-                    <div class="row" style="margin:3px 0px 13px 0px;">
-                        Dear Client, You can now download BlackTie mobile app from appstore and login with your email address to access your account.
-                    </div>
-                    <div class="row float-right">
-                        <button type="button" class="btn btn-primary" (click)="addAccount()">ADD & NOTIFY CLIENT</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

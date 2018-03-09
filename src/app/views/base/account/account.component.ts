@@ -29,27 +29,20 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      'name': ['', Validators.required],
-      'birthYear': ['', [Validators.required,CustomeValidateComponent.birthYear]],
-      'location': this.fb.group({
-        'country': ['', Validators.required],
-        'city': ''
-      }),
-      'phoneNumbers': this.fb.array([this.buildPhoneNumberComponent()])
+     
+      'email':['',Validators.required],
+      'phone':['',Validators.required],
+      'fname':['',Validators.required],
+      'lname':['',Validators.required],
+      'hours':['',Validators.required],
+      'rHours':['',Validators.required]
     },
     {
-      validator: Validators.compose([CustomeValidateComponent.countryCity, CustomeValidateComponent.telephoneNumbers])
-    }
-  );
-
+      validator: Validators.compose([])
+    });
     this.loadData();
   }
   
-  buildPhoneNumberComponent() {
-    return new FormControl('', [Validators.required]);
-  }
-  
-
   loadData(){
     this.dataService.getManage()
     .subscribe( data => {
@@ -58,14 +51,13 @@ export class AccountComponent implements OnInit {
     })
   }
 
-  addAccount(){
-    console.log('Test validation');
-
-    // this.dataService.addAccount(this.email,this.phone,this.hours,this.rHours,"password",this.fname,this.lname)
-    // .subscribe(data=>{
-    //   console.log('data',data);
-    //   this.loadData();
-    // })
+  addAccount(alldata){
+    // console.log('Test validation',alldata);
+    this.dataService.addAccount(this.email,this.phone,this.hours,this.rHours,"password",this.fname,this.lname)
+    .subscribe(data=>{
+      console.log('data',data);
+      this.loadData();
+    })
   }
 }
 
