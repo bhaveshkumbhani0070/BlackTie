@@ -5,24 +5,24 @@
                 <div class="card-group">
                     <div class="card p-4">
                         <div class="card-body">
-                            <form #f="ngForm" (ngSubmit)="logMein()">
+                            <form [formGroup]="myForm" (ngSubmit)="logMein()" novalidate>
                                 <h1>Login</h1>
                                 <p class="text-muted">Sign In to your account</p>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="icon-user"></i></span>
                                     </div>
-                                    <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Email" required>
-                                    <!-- <input id="email" name="email" class="form-control" required [(ngModel)]="email" #name="ngModel">  -->
+                                    <input type="email" name="email" class="form-control" [(ngModel)]="email" formControlName="email" placeholder="Email" required>
                                 </div>
-                                <span class="help-block" style="color:red">{{errorEmail}}</span>
+                                <show-errors [control]="myForm.controls.email"></show-errors>
+                                <!-- <span class="help-block" style="color:red">{{errorEmail}}</span> -->
                                 <div class="input-group mb-4">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="icon-lock"></i></span>
                                     </div>
-                                    <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Password" required>
+                                    <input type="password" name="password" class="form-control" [(ngModel)]="password" formControlName="password" placeholder="Password" required>
                                 </div>
-                                <span class="help-block" style="color:red">{{errorPassword}}</span>
+                                <show-errors [control]="myForm.controls.password"></show-errors>
                                 <!-- <div class="row">
                                     <div class="col-6">
                                         <p><a href="#/pages/forgot"> Forgot Password</a></p>
@@ -30,7 +30,7 @@
                                 </div> -->
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="submit" [disabled]="f.invalid" class="btn btn-primary px-4">Login</button>
+                                        <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary px-4">Login</button>
                                     </div>
                                 </div>
                             </form>

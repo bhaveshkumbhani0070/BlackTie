@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ForgotComponent } from './forgot/forgot.component';
+import { ShowErrorComponent } from './show-error/show-error.component';
 
 @NgModule({
   imports: [ 
@@ -22,7 +23,8 @@ import { ForgotComponent } from './forgot/forgot.component';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    ForgotComponent
+    ForgotComponent,
+    ShowErrorComponent
   ]
 })
 export class PagesModule { }

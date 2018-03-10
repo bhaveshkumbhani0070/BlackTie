@@ -6,44 +6,46 @@
                     Add New Account
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="email" [(ngModel)]="email" placeholder="Email">
+                    <form [formGroup]="myForm" (ngSubmit)="addAccount()" novalidate>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" name="email" formControlName="email" class="form-control" [(ngModel)]="email" placeholder="Email">
+                                <show-errors [control]="myForm.controls.email"></show-errors>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="phone" formControlName="phone" [(ngModel)]="phone" placeholder="Phone Number">
+                                <show-errors [control]="myForm.controls.phone"></show-errors>
+                            </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="phone number" [(ngModel)]="phone" placeholder="Phone Number">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="fname" formControlName="fname" [(ngModel)]="fname" placeholder="First Name">
+                                <show-errors [control]="myForm.controls.fname"></show-errors>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="lname" formControlName="lname" [(ngModel)]="lname" placeholder="Last Name">
+                                <show-errors [control]="myForm.controls.lname"></show-errors>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="hours" [(ngModel)]="fname" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="lname" placeholder="Last Name">
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="hours" [(ngModel)]="hours" placeholder="Package Hours">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="hours" formControlName="hours" [(ngModel)]="hours" placeholder="Package Hours">
+                                <show-errors [control]="myForm.controls.hours"></show-errors>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input type="text" class="form-control" name="rHours" formControlName="rHours" [(ngModel)]="rHours" placeholder="Remaining Hours">
+                                <show-errors [control]="myForm.controls.rHours"></show-errors>
+                            </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="rHours" placeholder="Remaining Hours">
-                        </div>
-                    </div>
-                    <!-- <div class="row">
-                         <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" id="postal-code" [(ngModel)]="password" placeholder="Password">
-                        </div>
-                    </div> -->
-                    <div class="row" style="margin:3px 0px 13px 0px;">
-                        Dear Client, You can now download BlackTie mobile app from appstore and login with your email address to access your account.
-                    </div>
 
-
-                    <div class="row float-right">
-                        <button type="button" class="btn btn-primary" (click)="addAccount()">ADD & NOTIFY CLIENT</button>
-                    </div>
+                        <div class="row" style="margin:3px 0px 13px 0px;">
+                            Dear Client, You can now download BlackTie mobile app from appstore and login with your email address to access your account.
+                        </div>
+                        <div class="row float-right">
+                            <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">ADD & NOTIFY CLIENT</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -54,20 +56,34 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label>Send to</label>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="form-check form-check-inline mr-1" id="inline-radios">
+                                <input class="form-check-input" type="radio" checked="true" name="inline-radios" [(ngModel)]="client" id="inlineRadio1" value="all">
+                                <label class="form-check-label" for="inlineRadio1">All client</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-1">
+                                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" [(ngModel)]="client" value="specific">
+                                <label class="form-check-label" for="inlineRadio2">Specific Client</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="client=='specific'">
                         <div class="form-group col-sm-12">
                             <label class="sr-only">Enter Client ID</label>
-                            <input type="text" class="form-control" [(ngModel)]="idd" placeholder="Enter Client ID">
+                            <input type="text" class="form-control" [(ngModel)]="id" placeholder="Enter Client ID">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            <textarea id="textarea-input" name="textarea-input" [(ngModel)]="typee" rows="2" class="form-control" placeholder="Type Notification Text"></textarea>
+                            <textarea id="textarea-input" name="textarea-input" [(ngModel)]="type" rows="2" class="form-control" placeholder="Type Notification Text"></textarea>
                         </div>
                     </div>
-
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-primary float-right" (click)="addMe(idd,typee)"><i class="fa fa-dot-circle-o"></i> Send</button>
+                    <button type="button" class="btn btn-sm btn-primary float-right" (click)="addMe()"><i class="fa fa-dot-circle-o"></i> Send</button>
                 </div>
             </div>
         </div>

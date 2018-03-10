@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../authentication.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators, FormBuilder, NgForm } from '@angular/forms';
+import { CustomeValidateComponent } from './show-error/custome-validate.component';
 
 @Component({
   templateUrl: 'login.component.html'
@@ -14,63 +15,33 @@ export class LoginComponent {
   userForm: any;
   errorEmail:string="";
   errorPassword:string="";
-  
+  public myForm: FormGroup;
+
   // myForm: FormGroup;
   // emailCtrl: FormControl;
   
   constructor(
     private authenticationService:AuthenticationService,
     private router:Router ,
-    // private fb: FormBuilder
+    private fb: FormBuilder
   ) { 
-    // this.myForm = fb.group({
-    //   username:  ['', Validators.required],
-    //   surname: ['', Validators.required],
-    //   message: ['', Validators.required],
-    //   email: ['', Validators.email]
-    // });
+    
   }
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
 
-    this.userForm = new FormGroup({
-      'email': new FormControl(this.email, [
-        Validators.required
-      ]),
+    this.myForm = this.fb.group({
+      'email':['',[Validators.required,CustomeValidateComponent.emailValid]],
+      'password':['',Validators.required]
+    },
+    {
+      validator: Validators.compose([])
     });
    
   }
   logMein(){
     console.log('email',this.email,' ',this.password);
-    if(!this.email){
-      this.errorEmail="Email field is required";
-      return;
-    }
-    else{
-      var EMAIL_REGEXP = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
-      var regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-      if (regexp.test(this.email)) {
-        this.errorEmail="";
-      }
-      else{
-        this.errorEmail="Please provide a valid email";
-        return;
-      }
-
-    }
-    if(!this.password){
-      this.errorPassword="Password field is required";
-    }
-    else{
-      if(this.password.length>8){
-        this.errorPassword="";
-      }
-      else{
-        this.errorPassword="Password must more than 8 character";
-        return;
-      }
-    }
     this.authenticationService.login(this.email, this.password)
     .subscribe(result => {
         if (result === true) {
