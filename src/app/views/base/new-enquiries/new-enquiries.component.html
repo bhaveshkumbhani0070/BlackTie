@@ -9,28 +9,18 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Client Id</th>
-                                <th>Flight From</th>
-                                <th>Flight To</th>
-                                <th>Flight Type</th>
-                                <th>plane Type</th>
-                                <th>Passengers</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Text</th>
                                 <th>Date</th>
-                                <th>Return Date</th>
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of data | orderBy:'date_time':true">
-                                <td>{{data.client_id}}</td>
-                                <td>{{data.flight_from}}</td>
-                                <td>{{data.flight_to}}</td>
-                                <td>{{data.flight_type}}</td>
-                                <td>{{data.plane_type}}</td>
-                                <td>{{data.number_of_passengers}}</td>
-                                <td>{{data.date_time}}</td>
-                                <td>{{data.return_date_time}}</td>
-                                <td>{{data.request_type}}</td>
+                            <tr *ngFor="let data of data | orderBy:'created_at':true">
+                                <td>{{data.name}}</td>
+                                <td>{{data.email}}</td>
+                                <td>{{data.txt}}</td>
+                                <td>{{data.created_at}}</td>
                             </tr>
                         </tbody>
                     </table>

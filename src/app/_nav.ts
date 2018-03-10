@@ -21,19 +21,19 @@ export const navigation = [
     name: 'Flight Enquiries',
     url: '/client/flight',
     icon: 'fa fa-fighter-jet fa-lg',
-    badge: {
-      variant: 'info',
-      text: localStorage.getItem('totalFlight')
-    }
+    // badge: {
+    //   variant: 'info',
+    //   text: localStorage.getItem('totalFlight')
+    // }
   },
   {
     name:'Package Bookings',
     url:'/client/package',
     icon:'fa fa-dollar fa-lg ',
-    badge: {
-      variant: 'info',
-      text: localStorage.getItem('totalPackage')
-    }
+    // badge: {
+    //   variant: 'info',
+    //   text: localStorage.getItem('totalPackage')
+    // }
   },
   {
     name:'Flying Hours',
@@ -48,10 +48,10 @@ export const navigation = [
     name:'Send Notifications',
     url:'/client/notification',
     icon:'fa fa-bell fa-lg ',
-    badge: {
-      variant: 'info',
-      text: localStorage.getItem('totalNotification')
-    }
+    // badge: {
+    //   variant: 'info',
+    //   text: localStorage.getItem('totalNotification')
+    // }
   },
   {
     name:'Add New Account',

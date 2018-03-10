@@ -6,8 +6,6 @@
                     <i class="fa fa-align-justify"></i> FLIGHT ENQUIRIES
                 </div>
                 <div class="card-body">
-
-
                     <table class="table">
                         <thead>
                             <tr>
@@ -33,7 +31,7 @@
                                 <td>{{data.plane_type}}</td>
                                 <td>{{data.number_of_passengers}}</td>
                                 <td>
-                                    <select class="form-control" [ngModel]="selectedDevice" (ngModelChange)="onChange(data.id,$event)">
+                                    <select class="form-control" [ngModel]="selectedDevice" (ngModelChange)="onChange(data,$event)">
                                             <option [value]="i" *ngFor="let i of statuses">{{i}}</option>
                                     </select>
                                 </td>

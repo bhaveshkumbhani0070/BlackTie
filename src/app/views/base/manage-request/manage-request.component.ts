@@ -26,6 +26,8 @@ export class ManageRequestComponent implements OnInit {
   date_time:string;
   return_date_time:string;
   client_ids=[];
+  status="";
+  statuss=["requested","upcoming","completed"];
   public myForm: FormGroup;
 
   constructor(
@@ -43,25 +45,47 @@ export class ManageRequestComponent implements OnInit {
       'number_of_passengers':['',Validators.required],
       'date_time':['',Validators.required],
       'return_date_time':['',Validators.required],
-      'plane_type':['',Validators.required]
+      'plane_type':['',Validators.required],
+      'status':['',Validators.required]
     },
     {
       validator: Validators.compose([])
     });
     this.loadData();
+    this.loadManage();
   }
-  loadData(){
+
+  loadManage(){
     this.dataService.getManage()
     .subscribe( data => {
       console.log('New Account request',data);
       this.client_ids=data["data"]["data"];
-      // this.data=data["data"]["data"];
+    })
+  }    
+  loadData(){
+
+    this.dataService.getFlight()
+    .subscribe(data=>{
+      this.data=data["data"]["data"];
     })
   }
 
-  addRequest(status){
+  onChange(d,selected){
+    console.log('data',d.id,selected);
+    this.dataService.updateFlight(d.id,selected)
+    .subscribe( data => {
+        console.log('updated flight',data);
+    })
+    this.dataService.addNotification([d.client_id],"Status update by admin") 
+      .subscribe(data => {
+        console.log('Notification send to client');
+        this.loadData();
+      });
+  }
+
+  addRequest(){
   // client_id,flight_from,flight_to,flight_type,plane_type,number_of_passengers,date_time,return_date_time,request_type
-  this.dataService.addFlightReq(this.client_id,this.flight_from,this.flight_to,this.flight_type,this.plane_type,this.number_of_passengers,this.date_time,this.return_date_time,status)
+  this.dataService.addFlightReq(this.client_id,this.flight_from,this.flight_to,this.flight_type,this.plane_type,this.number_of_passengers,this.date_time,this.return_date_time,this.status)
   .subscribe( data => {
     this.client_id="";
     this.flight_from="";
@@ -71,6 +95,7 @@ export class ManageRequestComponent implements OnInit {
     this.number_of_passengers="";
     this.date_time="";
     this.return_date_time="";
+    this.loadData();
     console.log('Manage request is created',status, data);
   })
   }

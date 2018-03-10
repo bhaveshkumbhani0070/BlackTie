@@ -279,7 +279,7 @@ export class DataService {
   }
 
   getNewEnquiry() {
-    return this.http.get(this.mainUrl + '/api/new/request/flights/', {
+    return this.http.get(this.mainUrl + '/api/enquiry/', {
       headers: {
         "content-type": "application/json",
         "Authorization":"Bearer "+this.authenticationService.token

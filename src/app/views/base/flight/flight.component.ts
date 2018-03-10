@@ -34,12 +34,17 @@ export class FlightComponent implements OnInit {
       this.data=data["data"]["data"];
     })
   }
-  onChange(id,selected){
-    console.log('data',id,selected);
-    this.dataService.updateFlight(id,selected)
+  onChange(d,selected){
+    console.log('data',d.id,selected);
+    this.dataService.updateFlight(d.id,selected)
     .subscribe( data => {
         console.log('updated flight',data);
     })
+    this.dataService.addNotification([d.client_id],"Status update by admin") 
+      .subscribe(data => {
+        console.log('Notification send to client');
+        this.loadData();
+      });
   }
 }
 
