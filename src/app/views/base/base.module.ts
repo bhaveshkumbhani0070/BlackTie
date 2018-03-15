@@ -39,6 +39,9 @@ import { PaginationsComponent } from './paginations.component';
 // Progress Component
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ProgressComponent } from './progress.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 // Tooltip Component
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -72,7 +75,10 @@ import { ShowErrorComponent } from './show-error/show-error.component';
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AlertModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
   declarations: [
     CardsComponent,

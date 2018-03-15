@@ -15,7 +15,7 @@ export class NotificationComponent implements OnInit {
   type:string;
   client="all";
   allClient=[];
-
+  
   constructor(
     private http: HttpClient,
     private dataService:DataService,
@@ -23,23 +23,25 @@ export class NotificationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadData();
+    // this.loadData();
     this.loadManage();
   }
 
-  loadData(){
-    this.dataService.getNotification()
-    .subscribe(d => {
-       console.log('getNotification',d["data"]["data"]);
-       localStorage.setItem('totalNotification', d["data"]["data"]["length"]);
-       this.data=d["data"]["data"];
-    });
+  // loadData(){
+  //   this.dataService.getManage()
+  //   .subscribe(d => {
+  //      console.log('getAccount',d["data"]["data"]);
+  //      localStorage.setItem('totalNotification', d["data"]["data"]["length"]);
+  //      this.data=d["data"]["data"];
+  //   });
 
-  }
+  // }
   loadManage(){
     this.dataService.getManage()
     .subscribe( data => {
       console.log('Manage data',data["data"]["data"]);
+      localStorage.setItem('totalNotification', data["data"]["data"]["length"]);
+       this.data=data["data"]["data"];
       if(data["data"]["data"].length>0){
         for(let i=0;i<data["data"]["data"].length;i++){
           this.allClient.push(data["data"]["data"][i]["client_id"])
@@ -54,7 +56,7 @@ export class NotificationComponent implements OnInit {
       .subscribe(data => {
         console.log('All data',data);
         this.type="";
-        this.loadData();
+        this.loadManage();
       });
     }
     else{
@@ -62,7 +64,7 @@ export class NotificationComponent implements OnInit {
       .subscribe(data => {
         console.log('single ',data);
         this.type="";
-        this.loadData();
+        this.loadManage();
       });
     }
   }

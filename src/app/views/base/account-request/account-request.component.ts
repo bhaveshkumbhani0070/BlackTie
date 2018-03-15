@@ -28,7 +28,7 @@ export class AccountRequestComponent implements OnInit {
     this.dataService.getNewAccountReq()
     .subscribe( data => {
       console.log('New Account request',data);
-      // localStorage.setItem('totalFlight', data["data"]["data"]["length"]);
+      localStorage.setItem('totalAccReq', data["data"]["data"]["length"]);
       this.data=data["data"]["data"];
     })
   }

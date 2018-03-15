@@ -6,8 +6,8 @@ import { navigation } from './../../_nav';
 @Component({
   selector: 'app-sidebar-nav',
   template: `
-    <nav class="sidebar-nav" style="background-color: white;color:black;width:221px;">
-      <ul class="nav" style="width:226px;">
+    <nav class="sidebar-nav" style="background-color: white;color:black;width:251px;">
+      <ul class="nav" style="width:260px;">
         <ng-template ngFor let-navitem [ngForOf]="navigation">
           <li *ngIf="isDivider(navitem)" class="nav-divider"></li>
           <ng-template [ngIf]="isTitle(navitem)">

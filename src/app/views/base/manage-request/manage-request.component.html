@@ -16,6 +16,9 @@
                 </div>
 
                 <div class="card-body">
+                    <div *ngFor="let alert of aleData">
+                        <alert type="success" dismissOnTimeout="4000" isOpen="false">{{ alert.msg }}</alert>
+                    </div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -41,9 +44,9 @@
                                 <td>{{data.plane_type}}</td>
                                 <td>{{data.number_of_passengers}}</td>
                                 <td>
-                                    <select class="form-control" [ngModel]="selectedDevice" (ngModelChange)="onChange(data,$event)">
-                                                    <option [value]="i" *ngFor="let i of statuss">{{i}}</option>
-                                            </select>
+                                    <select class="form-control" style="width: 142px" [(ngModel)]="data.status" (ngModelChange)="onChange(data,$event)">
+                                            <option [value]="i" *ngFor="let i of statuss" >{{i}}</option>
+                                    </select>
                                 </td>
                             </tr>
                         </tbody>
@@ -269,17 +272,10 @@
                             <show-errors [control]="myForm.controls.number_of_passengers"></show-errors>
                         </div>
                         <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" name="date_time" formControlName="date_time" [(ngModel)]="date_time" placeholder="Date Time">
-                            <show-errors [control]="myForm.controls.date_time"></show-errors>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" name="return_date_time" formControlName="return_date_time" [(ngModel)]="return_date_time" placeholder="Return Date Time">
-                            <show-errors [control]="myForm.controls.return_date_time"></show-errors>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <input type="text" class="form-control" name="plane_type" formControlName="plane_type" [(ngModel)]="plane_type" placeholder="Plane Type">
+                            <select class="form-control" name="plane_type" formControlName="plane_type" [(ngModel)]="plane_type">
+                                    <option value="">Plane Type</option>    
+                                    <option [value]="i" *ngFor="let i of plane_types">{{i}}</option>
+                                </select>
                             <show-errors [control]="myForm.controls.plane_type"></show-errors>
                         </div>
                     </div>
@@ -291,6 +287,27 @@
                                     <option [value]="i" *ngFor="let i of statuss">{{i}}</option>
                                 </select>
                             <show-errors [control]="myForm.controls.status"></show-errors>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <label class="col-form-label" for="date_time">Departure Date</label>
+                            <!-- <input type="text" class="form-control" name="date_time" formControlName="date_time" [(ngModel)]="date_time" placeholder="Date Time"> -->
+                            <input type="text" class="form-control" name="date_time" #dp="bsDatepicker" formControlName="date_time" bsDatepicker [bsValue]="bsValue" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" [(ngModel)]="date_time">
+                            <show-errors [control]="myForm.controls.date_time"></show-errors>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <timepicker [(ngModel)]="mytime" formControlName="mytime"></timepicker>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="flight_type=='two_way'">
+                        <div class="form-group col-sm-4">
+                            <label class="col-form-label" for="return_date_time">Departure Return Date</label>
+                            <input type="text" class="form-control" name="return_date_time" #dp="bsDatepicker" formControlName="return_date_time" bsDatepicker [bsValue]="bsValue" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" [(ngModel)]="return_date_time">
+                            <show-errors [control]="myForm.controls.return_date_time"></show-errors>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <timepicker [(ngModel)]="myRtime" formControlName="myRtime"></timepicker>
                         </div>
                     </div>
                     <div class="modal-footer float-right">

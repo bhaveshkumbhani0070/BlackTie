@@ -21,19 +21,19 @@ export const navigation = [
     name: 'Flight Enquiries',
     url: '/client/flight',
     icon: 'fa fa-fighter-jet fa-lg',
-    // badge: {
-    //   variant: 'info',
-    //   text: localStorage.getItem('totalFlight')
-    // }
+    badge: {
+      variant: 'info',
+      text: localStorage.getItem('totalFlight')
+    }
   },
   {
     name:'Package Bookings',
     url:'/client/package',
     icon:'fa fa-dollar fa-lg ',
-    // badge: {
-    //   variant: 'info',
-    //   text: localStorage.getItem('totalPackage')
-    // }
+    badge: {
+      variant: 'info',
+      text: localStorage.getItem('totalPackage')
+    }
   },
   {
     name:'Flying Hours',
@@ -61,29 +61,20 @@ export const navigation = [
   {
     name:'Account Requests',
     url:'/client/accountRequest',
-    icon:'fa fa-address-book fa-lg'
+    icon:'fa fa-address-book fa-lg',
+    badge: {
+      variant: 'info',
+      text: localStorage.getItem('totalAccReq')
+    }
   },
   {
-    name:'Flight Requests',
+    name:'Manage Flight Requests',
     url:'/client/manageRequest',
     icon:'fa fa-plus-circle fa-lg',
-    // children: [
-    //   {
-    //     name: 'Requested Flights',
-    //     url: '/buttons/buttons',
-    //     icon: 'icon-cursor'
-    //   },
-    //   {
-    //     name: 'Upcoming Flights',
-    //     url: '/buttons/dropdowns',
-    //     icon: 'icon-cursor'
-    //   },
-    //   {
-    //     name: 'Completed Flights',
-    //     url: '/buttons/social-buttons',
-    //     icon: 'icon-cursor'
-    //   }
-    // ]
+    badge: {
+      variant: 'info',
+      text: localStorage.getItem('totalManage')
+    }
   },
   {
     name:'New Enquiries',

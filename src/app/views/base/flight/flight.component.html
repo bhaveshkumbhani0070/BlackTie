@@ -6,6 +6,9 @@
                     <i class="fa fa-align-justify"></i> FLIGHT ENQUIRIES
                 </div>
                 <div class="card-body">
+                    <div *ngFor="let alert of aleData">
+                        <alert type="success" dismissOnTimeout="4000" isOpen="false">{{ alert.msg }}</alert>
+                    </div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -15,7 +18,7 @@
                                 <th>Destination</th>
                                 <th>Date</th>
                                 <th>Time</th>
-                                <th>Plan Type</th>
+                                <th>Plane Type</th>
                                 <th>Passengers</th>
                                 <th>Status</th>
                             </tr>
@@ -31,13 +34,14 @@
                                 <td>{{data.plane_type}}</td>
                                 <td>{{data.number_of_passengers}}</td>
                                 <td>
-                                    <select class="form-control" [ngModel]="selectedDevice" (ngModelChange)="onChange(data,$event)">
+                                    <select class="form-control" style="width: 142px" [(ngModel)]="data.status" (ngModelChange)="onChange(data,$event)">
                                             <option [value]="i" *ngFor="let i of statuses">{{i}}</option>
                                     </select>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+
                     <!-- <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                         <li class="page-item active">

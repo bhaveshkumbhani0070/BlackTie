@@ -13,8 +13,8 @@ import { OrderModule } from 'ngx-order-pipe';
 export class FlightComponent implements OnInit {
 
   data:any;
-  selectedDevice="two";
   statuses=["completed", "upcoming", "requested"];
+  aleData: any[] = [];
 
   constructor(
     private http: HttpClient,
@@ -39,6 +39,11 @@ export class FlightComponent implements OnInit {
     this.dataService.updateFlight(d.id,selected)
     .subscribe( data => {
         console.log('updated flight',data);
+        this.aleData.push({
+          type: 'info',
+          msg: 'The status of your flight enquiry has been updated. Please check My Bookings section in Blacktie App',
+          timeout: 5000
+        });
     })
     this.dataService.addNotification([d.client_id],"Status update by admin") 
       .subscribe(data => {
